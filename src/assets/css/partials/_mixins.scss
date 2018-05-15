@@ -1,0 +1,736 @@
+// Rock Hammer by Stuff and Nonsense
+// Version: <!-- $version -->
+// URL: http://stuffandnonsense.co.uk/projects/rock-hammer/
+// Version: <!-- $license -->
+
+// Example: @include prefixer(border-radius, $radii, webkit ms spec);
+@mixin prefixer ($property, $value, $prefixes) {
+
+  @each $prefix in $prefixes {
+
+    @if $prefix == webkit {
+      -webkit-#{$property}: $value;
+    }
+    @else if $prefix == moz {
+      -moz-#{$property}: $value;
+    }
+    @else if $prefix == ms {
+      -ms-#{$property}: $value;
+    }
+    @else if $prefix == o {
+      -o-#{$property}: $value;
+    }
+    @else if $prefix == spec {
+      #{$property}: $value;
+    }
+    @else  {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}
+
+// Typography =============================================
+
+@mixin makeborder {
+    border: 1px solid #bada55;
+}
+
+@mixin grid-child($col-start, $col-end, $row-start, $row-end) {
+    -ms-grid-column: $col-start;
+    -ms-grid-column-span: $col-end - $col-start;
+    -ms-grid-row: $row-start;
+    -ms-grid-row-span: $row-end - $row-start;
+    grid-column: #{$col-start}/#{$col-end};
+    grid-row: #{$row-start}/#{$row-end};
+}
+
+@mixin display-grid {
+    display: -ms-grid;
+    display: grid;
+    grid-auto-flow: column;
+}
+
+@mixin grid-columns($values) {
+    -ms-grid-columns: $values;
+    grid-template-columns: $values;
+}
+
+@mixin grid-rows($values) {
+    -ms-grid-rows: $values;
+    grid-template-rows: $values;
+}
+
+@mixin font-size($font-size: 18) {
+    font-size: #{$font-size}px;
+}
+
+@mixin css-hyphens($val: auto) {
+    -webkit-hyphens: $val;
+    -moz-hyphens: $val;
+    -ms-hyphens: $val;
+    -o-hyphens: $val;
+    hyphens: $val;
+}
+
+@mixin smallcaps($color, $font-weight) {
+    font-variant: small-caps;
+    font-weight: $font-weight;
+    text-transform: lowercase;
+    color: $color;
+}
+
+// chromeframe
+
+@mixin chromeframe {
+    margin: .2em 0;
+    background: $lightneutralcolor;
+    color: $neutralcolor;
+    padding: .2em 0;
+}
+
+// hidden
+
+@mixin hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+@mixin visible {
+    display: block !important;
+    visibility: visible;
+}
+
+@mixin hide-text {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@mixin invisible {
+    visibility: hidden;
+}
+
+@mixin visuallyhidden {
+    overflow: hidden;
+    position: absolute;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+
+    &.focusable {
+        &:active, &:focus {
+            position: static;
+            clip: auto;
+            height: auto;
+            width: auto;
+            margin: 0;
+            overflow: visible;
+        }
+    }
+}
+
+@mixin media($query: $feature $value $columns, $total-columns: $grid-columns) {
+
+    $loop-to: length($query);
+    $media-query: "screen and ";
+    $default-grid-columns: $grid-columns;
+    $grid-columns: $total-columns !global;
+
+    @if is-not(is-even(length($query))) {
+      $grid-columns: nth($query, $loop-to) !global;
+      $loop-to: $loop-to - 1;
+    }
+
+    $i: 1;
+    @while $i <= $loop-to {
+      $media-query: $media-query + "(" + nth($query, $i) + ": " + nth($query, $i + 1) + ") ";
+
+      @if ($i + 1) != $loop-to {
+        $media-query: $media-query + "and ";
+      }
+
+      $i: $i + 2;
+    }
+
+    @media #{$media-query} {
+      @content;
+      $grid-columns: $default-grid-columns !global;
+    }
+
+}
+
+/**
+ * Animation
+ */
+ @mixin keyframes($animation-name) {
+     @-webkit-keyframes #{$animation-name} {
+         @content;
+     }
+     @-moz-keyframes #{$animation-name} {
+         @content;
+     }
+     @-ms-keyframes #{$animation-name} {
+         @content;
+     }
+     @-o-keyframes #{$animation-name} {
+         @content;
+     }
+     @keyframes #{$animation-name} {
+         @content;
+     }
+ }
+
+ @mixin animation($str) {
+   -webkit-animation: #{$str};
+   -moz-animation: #{$str};
+   -ms-animation: #{$str};
+   -o-animation: #{$str};
+   animation: #{$str};
+ }
+
+
+// --------------------------------------------------
+// Flexbox SASS mixins
+// The spec: http://www.w3.org/TR/css3-flexbox
+// --------------------------------------------------
+
+// Flexbox display
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// The 'flex' shorthand
+// - applies to: flex items
+// <positive-number>, initial, auto, or none
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+     -moz-box-flex: $values;
+      -webkit-flex: $values;
+      -ms-flex: $values;
+          flex: $values;
+}
+
+// Flex Flow Direction
+// - applies to: flex containers
+// row | row-reverse | column | column-reverse
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+     -moz-flex-direction: $direction;
+      -ms-flex-direction: $direction;
+          flex-direction: $direction;
+}
+
+// Flex Line Wrapping
+// - applies to: flex containers
+// nowrap | wrap | wrap-reverse
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+     -moz-flex-wrap: $wrap;
+      -ms-flex-wrap: $wrap;
+          flex-wrap: $wrap;
+}
+
+// Flex Direction and Wrap
+// - applies to: flex containers
+// <flex-direction> || <flex-wrap>
+@mixin flex-flow($flow) {
+  -webkit-flex-flow: $flow;
+     -moz-flex-flow: $flow;
+      -ms-flex-flow: $flow;
+          flex-flow: $flow;
+}
+
+// Display Order
+// - applies to: flex items
+// <integer>
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;
+     -moz-box-ordinal-group: $val;
+         -ms-flex-order: $val;
+          -webkit-order: $val;
+              order: $val;
+}
+
+// Flex grow factor
+// - applies to: flex items
+// <number>
+@mixin flex-grow($grow) {
+  -webkit-flex-grow: $grow;
+     -moz-flex-grow: $grow;
+      -ms-flex-grow: $grow;
+          flex-grow: $grow;
+}
+
+// Flex shrink
+// - applies to: flex item shrink factor
+// <number>
+@mixin flex-shrink($shrink) {
+  -webkit-flex-shrink: $shrink;
+     -moz-flex-shrink: $shrink;
+      -ms-flex-shrink: $shrink;
+          flex-shrink: $shrink;
+}
+
+// Flex basis
+// - the initial main size of the flex item
+// - applies to: flex itemsnitial main size of the flex item
+// <width>
+@mixin flex-basis($width) {
+  -webkit-flex-basis: $width;
+     -moz-flex-basis: $width;
+      -ms-flex-basis: $width;
+          flex-basis: $width;
+}
+
+// Axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | space-between | space-around
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+     -moz-justify-content: $justify;
+      -ms-justify-content: $justify;
+          justify-content: $justify;
+            -ms-flex-pack: $justify;
+}
+
+// Packing Flex Lines
+// - applies to: multi-line flex containers
+// flex-start | flex-end | center | space-between | space-around | stretch
+@mixin align-content($align) {
+  -webkit-align-content: $align;
+     -moz-align-content: $align;
+      -ms-align-content: $align;
+          align-content: $align;
+}
+
+// Cross-axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | baseline | stretch
+@mixin align-items($align) {
+  -webkit-align-items: $align;
+     -moz-align-items: $align;
+      -ms-align-items: $align;
+          align-items: $align;
+}
+
+// Cross-axis Alignment
+// - applies to: flex items
+// auto | flex-start | flex-end | center | baseline | stretch
+@mixin align-self($align) {
+  -webkit-align-self: $align;
+     -moz-align-self: $align;
+      -ms-align-self: $align;
+          align-self: $align;
+}
+
+
+@mixin horizontal($startColor: $white, $endColor: $lighterneutralcolor) {
+    background-color: $endColor;
+    background-image: -webkit-gradient(linear, 0 0, 100% 0, from($startColor), to($endColor));
+
+    // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(left, $startColor, $endColor);
+
+    // Safari 5.1+, Chrome 10+
+    background-image: -moz-linear-gradient(left, $startColor, $endColor);
+
+    // FF 3.6+
+    background-image: -ms-linear-gradient(left, $startColor, $endColor);
+
+    // IE10
+    background-image: -o-linear-gradient(left, $startColor, $endColor);
+
+    // Opera 11.10
+    background-image: linear-gradient(left, $startColor, $endColor);
+
+    // W3C
+    background-repeat: repeat-x;
+}
+
+@mixin vertical($startColor: $white, $endColor: $lighterneutralcolor) {
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor));
+
+    // Safari 4+, Chrome 2+
+    background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+
+    // Safari 5.1+, Chrome 10+
+    background-color: $endColor;
+    background-image: -moz-linear-gradient(top, $startColor, $endColor);
+
+    // FF 3.6+
+    background-image: -ms-linear-gradient(top, $startColor, $endColor);
+
+    // IE10
+    background-image: -o-linear-gradient(top, $startColor, $endColor);
+
+    // Opera 11.10
+    background-image: linear-gradient(top, $startColor, $endColor);
+
+    // W3C
+    background-repeat: repeat-x;
+}
+
+@mixin directional($startColor: $white, $endColor: $lighterneutralcolor, $deg: 45deg) {
+    background-color: $endColor;
+    background-image: -moz-linear-gradient($deg, $startColor, $endColor);
+
+    // FF 3.6+
+    background-image: -ms-linear-gradient($deg, $startColor, $endColor);
+
+    // IE10
+    background-image: -webkit-linear-gradient($deg, $startColor, $endColor);
+
+    // Safari 5.1+, Chrome 10+
+    background-image: -o-linear-gradient($deg, $startColor, $endColor);
+
+    // Opera 11.10
+    background-image: linear-gradient($deg, $startColor, $endColor);
+
+    // W3C
+    background-repeat: repeat-x;
+}
+
+// .bordered(COLOR, COLOR, COLOR, COLOR);
+
+@mixin bordered($top-color: #eee, $right-color: #eee, $bottom-color: #eee, $left-color: #eee) {
+    border-top: solid 1px $top-color;
+    border-left: solid 1px $left-color;
+    border-right: solid 1px $right-color;
+    border-bottom: solid 1px $bottom-color;
+}
+
+// @include box-shadow(HORIZONTAL VERTICAL BLUR COLOR))
+
+@mixin box-shadow($shadow: 0 1px 3px rgba(0, 0, 0, 0.25)) {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+// .drop-shadow(HORIZONTAL, VERTICAL, BLUR, ALPHA);
+
+@mixin drop-shadow($x-axis: 0, $y-axis: 1px, $blur: 2px, $alpha: 0.1) {
+    -webkit-box-shadow: $x-axis $y-axis $blur rgba(0, 0, 0, $alpha);
+    -moz-box-shadow: $x-axis $y-axis $blur rgba(0, 0, 0, $alpha);
+    box-shadow: $x-axis $y-axis $blur rgba(0, 0, 0, $alpha);
+}
+
+// @include opacity(VALUE);
+
+@mixin opacity($opacity: 0.5) {
+    -webkit-opacity: $opacity;
+    -moz-opacity: $opacity;
+    opacity: $opacity;
+
+    @if $ie8-opacity-supported == true {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacity * 100})";
+    }
+}
+
+// Shorthand mixin. Supports multiple parentheses-deliminated values for each variable.
+// Example: @include transition (all, 2.0s, ease-in-out);
+//          @include transition ((opacity, width), (1.0s, 2.0s), ease-in, (0, 2s));
+//          @include transition ($property:(opacity, width), $delay: (1.5s, 2.5s));
+
+
+@mixin transition ($properties...) {
+  @if length($properties) >= 1 {
+    @include prefixer(transition, $properties, webkit moz ms o spec);
+  }
+
+  @else {
+    $properties: all 0.15s ease-out 0;
+    @include prefixer(transition, $properties, webkit moz ms o spec);
+  }
+}
+
+@mixin transition-property ($properties...) {
+   -webkit-transition-property: transition-property-names($properties, 'webkit');
+      -moz-transition-property: transition-property-names($properties, 'moz');
+       -ms-transition-property: transition-property-names($properties, 'ms');
+        -o-transition-property: transition-property-names($properties, 'o');
+           transition-property: transition-property-names($properties, false);
+}
+
+@mixin transition-duration ($times...) {
+  @include prefixer(transition-duration, $times, webkit moz ms o spec);
+}
+
+@mixin transition-timing-function ($motions...) {
+// ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier()
+  @include prefixer(transition-timing-function, $motions, webkit moz ms o spec);
+}
+
+@mixin transition-delay ($times...) {
+  @include prefixer(transition-delay, $times, webkit moz ms o spec);
+}
+
+
+// .rotate(VALUEdeg);
+
+@mixin rotate($deg) {
+    -webkit-transform: rotate($deg);
+    -moz-transform: rotate($deg);
+    -ms-transform: rotate($deg);
+    -o-transform: rotate($deg);
+    transform: rotate($deg);
+}
+
+// .scale(VALUE);
+
+@mixin scale($ratio) {
+    -webkit-transform: scale($ratio);
+    -moz-transform: scale($ratio);
+    -ms-transform: scale($ratio);
+    -o-transform: scale($ratio);
+    transform: scale($ratio);
+}
+
+// .skew(VALUE, VALUE);
+
+@mixin skew($x: 0, $y: 0) {
+    -webkit-transform: skew($x, $y);
+    -moz-transform: skew($x, $y);
+    -ms-transform: skew($x, $y);
+    -o-transform: skew($x, $y);
+    transform: skew($x, $y);
+}
+
+// .translate(VALUE, VALUE)
+
+@mixin translate($x: 0, $y: 0) {
+    -webkit-transform: translate($x, $y);
+    -moz-transform: translate($x, $y);
+    -ms-transform: translate($x, $y);
+    -o-transform: translate($x, $y);
+    transform: translate($x, $y);
+}
+
+@mixin translate3d($x: 0, $y: 0, $z: 0) {
+    -webkit-transform: translate($x, $y, $z);
+    -moz-transform: translate($x, $y, $z);
+    -ms-transform: translate($x, $y, $z);
+    -o-transform: translate($x, $y, $z);
+    transform: translate($x, $y, $z);
+}
+
+// .background-size(VALUE VALUE);
+
+@mixin background-size($size) {
+    -webkit-background-size: $size;
+    -moz-background-size: $size;
+    -o-background-size: $size;
+    background-size: $size;
+}
+
+// .background-clip(VALUE); (border-box, padding-box, content-box)
+
+@mixin background-clip($clip) {
+    -webkit-background-clip: $clip;
+    -moz-background-clip: $clip;
+    background-clip: $clip;
+}
+
+// @include resize(VALUE) (none, both, horizontal, vertical, inherit)
+
+@mixin resize($direction: both) {
+    resize: $direction;
+    overflow: auto;
+}
+
+// @include placeholder(VALUE) (color)
+
+@mixin placeholder($color: $neutralcolor) {
+    &:-moz-placeholder {
+        @include font-size(14);
+
+        color: $color;
+    }
+
+    &::-moz-placeholder {
+        @include font-size(14);
+
+        color: $color;
+    }
+
+    &:-ms-input-placeholder {
+        @include font-size(14);
+
+        color: $color;
+    }
+
+    &::-webkit-input-placeholder {
+        @include font-size(14);
+
+        color: $color;
+    }
+}
+
+// @include overflow
+
+@mixin text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// @include zero
+
+@mixin zero {
+    margin: 0;
+    padding: 0;
+}
+
+// @include media-query-bp(UNIT, QUERY PART LEFT, QUERY PART RIGHT, TARGET)
+// NOTE: This MUST be used from within a selectore for the parent reference to work
+// Otherwise, an error will be thrown on SASS compile. Love, Aaron.
+
+@mixin media-query-bp($unit, $query1: min, $query2: width, $target: "") {
+    $mqtarget: "";
+
+    // Check if media queries are supported
+    @if $media-queries-supported == true {
+        @if $target != "" {
+            @media #{$target} and (#{$query1}-#{$query2}: #{$unit}) {
+                @content;
+            }
+        }
+        @else {
+            @media (#{$query1}-#{$query2}: #{$unit}) {
+                @content;
+            }
+        }
+    }
+    @else {
+        #{$no-mq-classname} & {
+            @content;
+        }
+    }
+}
+
+@mixin omega-reset($nth) {
+    &:nth-child(#{$nth}) {
+        margin-right: flex-gutter();
+    }
+
+    &:nth-child(#{$nth}+1) {
+        clear: none;
+    }
+}
+
+// HiDPI mixin. Default value set to 1.3 to target Google Nexus 7
+// (http://bjango.com/articles/min-device-pixel-ratio/)
+@mixin hidpi($ratio: 1.3) {
+    @media only screen and (-webkit-min-device-pixel-ratio: $ratio), only screen and (min--moz-device-pixel-ratio: $ratio), only screen and (-o-min-device-pixel-ratio: #{$ratio}/1), only screen and (min-resolution: #{round($ratio * 96)}dpi), only screen and (min-resolution: #{$ratio}dppx) {
+        @content;
+    }
+}
+
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@mixin grid-children-1-col() {
+    &:nth-child(1) {@include grid-child(1, 2, 1, 2);}
+
+    &:nth-child(2) {@include grid-child(1, 2, 2, 3);}
+
+    &:nth-child(3) {@include grid-child(1, 2, 3, 4);}
+
+    &:nth-child(4) {@include grid-child(1, 2, 4, 5);}
+
+    &:nth-child(5) {@include grid-child(1, 2, 5, 6);}
+
+    &:nth-child(6) {@include grid-child(1, 2, 6, 7);}
+
+    &:nth-child(7) {@include grid-child(1, 2, 7, 8);}
+
+    &:nth-child(8) {@include grid-child(1, 2, 8, 9);}
+
+    &:nth-child(9) {@include grid-child(1, 2, 9, 10);}
+
+    &:nth-child(10) {@include grid-child(1, 2, 10, 11);}
+
+    &:nth-child(11) {@include grid-child(1, 2, 11, 12);}
+
+    &:nth-child(12) {@include grid-child(1, 2, 12, 13);}
+}
+
+@mixin grid-children-2-col() {
+    &:nth-child(1) {@include grid-child(1, 2, 1, 2);}
+    &:nth-child(2) {@include grid-child(2, 3, 1, 2);}
+
+    &:nth-child(3) {@include grid-child(1, 2, 2, 3);}
+    &:nth-child(4) {@include grid-child(2, 3, 2, 3);}
+
+    &:nth-child(5) {@include grid-child(1, 2, 3, 4);}
+    &:nth-child(6) {@include grid-child(2, 3, 3, 4);}
+
+    &:nth-child(7) {@include grid-child(1, 2, 4, 5);}
+    &:nth-child(8) {@include grid-child(2, 3, 4, 5);}
+
+    &:nth-child(9) {@include grid-child(1, 2, 5, 6);}
+    &:nth-child(10) {@include grid-child(2, 3, 5, 6);}
+
+    &:nth-child(11) {@include grid-child(1, 2, 6, 7);}
+    &:nth-child(12) {@include grid-child(2, 3, 6, 7);}
+}
+
+@mixin grid-children-3-col() {
+    &:nth-child(1) {@include grid-child(1, 2, 1, 2);}
+    &:nth-child(2) {@include grid-child(2, 3, 1, 2);}
+    &:nth-child(3) {@include grid-child(3, 4, 1, 2);}
+
+    &:nth-child(4) {@include grid-child(1, 2, 2, 3);}
+    &:nth-child(5) {@include grid-child(2, 3, 2, 3);}
+    &:nth-child(6) {@include grid-child(3, 4, 2, 3);}
+
+    &:nth-child(7) {@include grid-child(1, 2, 3, 4);}
+    &:nth-child(8) {@include grid-child(2, 3, 3, 4);}
+    &:nth-child(9) {@include grid-child(3, 4, 3, 4);}
+
+    &:nth-child(10) {@include grid-child(1, 2, 4, 5);}
+    &:nth-child(11) {@include grid-child(2, 3, 4, 5);}
+    &:nth-child(12) {@include grid-child(3, 4, 4, 5);}
+}
+
+@mixin grid-children-4-col() {
+    &:nth-child(1) {@include grid-child(1, 2, 1, 2);}
+    &:nth-child(2) {@include grid-child(2, 3, 1, 2);}
+    &:nth-child(3) {@include grid-child(3, 4, 1, 2);}
+    &:nth-child(4) {@include grid-child(4, 5, 1, 2);}
+
+    &:nth-child(5) {@include grid-child(1, 2, 2, 3);}
+    &:nth-child(6) {@include grid-child(2, 3, 2, 3);}
+    &:nth-child(7) {@include grid-child(3, 4, 2, 3);}
+    &:nth-child(8) {@include grid-child(4, 5, 2, 3);}
+
+    &:nth-child(9) {@include grid-child(1, 2, 3, 4);}
+    &:nth-child(10) {@include grid-child(2, 3, 3, 4);}
+    &:nth-child(11) {@include grid-child(3, 4, 3, 4);}
+    &:nth-child(12) {@include grid-child(4, 5, 3, 4);}
+}
+
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+}
+
+@mixin fit-image {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}

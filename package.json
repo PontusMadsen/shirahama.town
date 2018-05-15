@@ -1,0 +1,53 @@
+{
+  "name": "white-label",
+  "version": "1.0.0",
+  "description": "Default project structure",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp watch",
+    "build ": "gulp critical",
+    "build:clean": "gulp clean && gulp critical",
+    "build:all-critical": "gulp clean && gulp critical-multiple",
+    "deploy": "gulp clean && gulp critical && gulp deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org:bigsouth/white-label-markup.git"
+  },
+  "author": "Big South",
+  "license": "ISC",
+  "homepage": "https://www.bigsouth.se/",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "browser-sync": "2.23.5",
+    "critical": "^1.1.0",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-color": "0.0.1",
+    "gulp-html-tag-include": "^1.0.1",
+    "gulp-js-minify": "0.0.3",
+    "gulp-minify": "^2.1.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-prompt": "^1.0.1",
+    "gulp-rsync": "0.0.8",
+    "gulp-sass": "^3.1.0",
+    "gulp-strip-json-comments": "^3.0.0",
+    "gulp-version-number": "^0.1.7",
+    "html-includes": "^1.2.3",
+    "node-sass": "^4.7.2",
+    "path": "^0.12.7",
+    "run-sequence": "^2.2.1",
+    "valid-url": "^1.0.9"
+  },
+  "dependencies": {}
+}

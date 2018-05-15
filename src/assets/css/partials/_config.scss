@@ -1,0 +1,96 @@
+// Uncomment to display the grid
+// $visual-grid: true !default;
+
+// Start the ‘atmosphere’ of your design by defining the colours of your pages and text
+$bodycolor: #fff;
+$textcolor: #000;
+
+// Next are two variables that will be used throughout your design;
+// $gutterwidth for horizontal spacing and $baselineheight for vertical rhythm
+
+$grid-columns: 12 !default;
+
+$gutter: 1em;
+$baselineheight: 21px;
+$objectgutter: 60px;
+$modulegutter: 120px;
+
+// Does your design needs a maximum width to maintain readable line lengths?
+$maxwidth: 90em;
+
+// What is the class name that the media query mixin should use to target
+// browsers not supporting media queries?
+$no-mq-classname: ".lt-ie9";
+
+// Now define your design’s typography by setting a base typeface and size
+$basefontfamily: "Raleway";
+$basefontsize: 14;
+
+// Your headings may inherit the base typeface, or you may set a different font stack
+$baseheadingfont: inherit;
+
+// Your headings may inherit the $textcolor, or you may set a different colour
+$baseheadingfontcolor: inherit;
+
+// Often you’ll use an alternative typeface (eg: for buttons, form inputs and tables)
+$altfontfamily:"Arial";
+$altlineheight: 1em;
+
+// You can choose a special typeface just for ampersands too
+$ampfontfamily: local('Georgia'), local('Garamond'), local('Palatino'), local('Book Antiqua');
+
+//  And if your site’s for geeks, you’ll need a font for code too
+$codefont: Monaco, "Courier New", monospace;
+$shadowing: 1px 1px 12px #000;
+
+// Define your design’s palette by choosing three main colours
+$primarycolor: #000;
+$secondarycolor: rgb(164, 50, 21);
+$tertiarycolor: rgb(241, 130, 237);
+
+// Now set a neutral colour for borders etc.
+$neutralcolor: rgb(71, 63, 63);
+$midneutralcolor: darken($neutralcolor, 25%);
+$darkneutralcolor: darken($neutralcolor, 50%);
+$lightneutralcolor: lighten($neutralcolor, 25%);
+$lighterneutralcolor: lighten($neutralcolor, 68%);
+$lightestneutralcolor: lighten($neutralcolor, 70%);
+
+// Sometimes you may want $black and $white to be ‘almost black’ and ’off-white’
+$black: #000;
+$white: #fff;
+
+// Choose a colour for your hyperlinks. Often this will be the $primarycolor
+$linkcolor: #0ea8c2;
+$linkcolorhover: #9d9c9c;
+$linkcolorvisited: darken($linkcolorhover, 10);
+$linkcolorfocus: darken($linkcolorvisited, 10);
+
+// Now define another set of colours. These will be used to style alerts and buttons
+$alertcolor: rgb(218, 79, 73);
+$errorcolor: rgb(176, 20, 0);
+$infocolor: rgb(216, 220, 162);
+$inversecolor: rgb(65, 65, 65);
+$successcolor: rgb(188, 212, 222);
+$warningcolor: $errorcolor;
+$pink: #EB609F;
+$yellow: #FFED00;
+$darkgrey: #4a4a4a;
+$grey: #D7D5D5;
+$lightgray: #F1EEEE;
+$thatothergreythatisnotinthemanual: #9e9e9e;
+$oddrows: #f6f6f6;
+$buttonblackhover: #db4a88;
+$lightgrey: #F1EEEE;
+
+// Next set variables for your design’s borders.
+$bordercolor: $lighterneutralcolor;
+$borderstyle: solid;
+$borderwidth: 1px;
+$borderradius: 4px;
+
+// Background colour for blockquotes, ins, and mark
+$basefontbackgroundcolor: $lightestneutralcolor;
+
+// Set a default duration for CSS transitions
+$transitionduration: .25s;

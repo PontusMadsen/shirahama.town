@@ -1,0 +1,118 @@
+@-webkit-viewport {
+    width: device-width;
+}
+
+@-moz-viewport {
+    width: device-width;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+@-o-viewport {
+    width: device-width;
+}
+
+@viewport {
+    width: device-width;
+}
+
+*, *::after, *::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+html {
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: $lightestneutralcolor;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    @include zero;
+
+    background-color: $bodycolor;
+    width: 100%;
+    font-family: $basefontfamily;
+
+    @include font-size($basefontsize);
+
+    line-height: $baselineheight;
+    letter-spacing: auto;
+    color: $textcolor;
+
+    h1 {
+    }
+}
+
+body:after {
+    content: '320';
+    display: none;
+}
+
+/* Common  */
+
+a {
+    color: $pink;
+    text-decoration: none;
+
+    @include transition(all 0.2s ease-in-out);
+
+    &:hover {
+        color: $linkcolorhover;
+        text-decoration: none;
+    }
+}
+
+small {}
+
+p {}
+
+h1, h2, h3, h4, h5, h6 {}
+
+h1 {}
+
+h2 {}
+
+h3 {}
+
+h4 {}
+
+h5 {}
+
+.strike {
+    text-decoration: line-through;
+}
+
+hr {
+    border-top: 1px solid #e5e5e5;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+img {
+    width: 100%;
+    line-height: 0;
+}
+
+b, strong {
+    font-weight: 700;
+}
+
+.light {
+    font-weight: 300;
+}
+
+.heavy {
+    font-weight: 700;
+}

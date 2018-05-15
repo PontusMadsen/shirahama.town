@@ -1,0 +1,42 @@
+section {
+    //  border: 1px solid $black;
+    margin: 0 auto;
+
+    &.full {
+        max-width: 100%;
+    }
+
+    &.wide {
+        max-width: 1260px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    &.wide-to-full-on-mobile {
+        max-width: 1260px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        @include media($mobile) {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    }
+}
+
+.black {
+    background-color: $black;
+}
+
+.lightgray {
+    background-color: $lightgray;
+}
+
+.pink {
+    background-color: $pink;
+}
+
+.yellow {
+    background-color: $yellow;
+}
+
