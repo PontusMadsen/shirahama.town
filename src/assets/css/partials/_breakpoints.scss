@@ -1,5 +1,5 @@
-$mobile: append(max-width 480px, 12);
-$mobilelandscape: append(max-width 668px, 12);
+$mobileportrait: new-breakpoint(max-width 480px);
+$mobile: new-breakpoint(max-width 668px);
 $tablet: append(max-width 768px, 12);
 $tabletlandscape: append(max-width 1024px, 12);
 $desktop: append(max-width 1440px, 12);
