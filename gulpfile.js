@@ -1,11 +1,11 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var babel = require('gulp-babel');
+var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
 var include = require('gulp-html-tag-include');
 var autoprefix = require("gulp-autoprefixer");
-var bourbon = require("bourbon").includePaths;
-var neat = require("bourbon-neat").includePaths;
 var minifyCSS = require('gulp-minify-css');
 var clean = require('gulp-clean');
 var critical = require('critical');
@@ -19,6 +19,7 @@ var minify = require('gulp-minify');
 var versionNumber = require('gulp-version-number');
 var stripComments = require('gulp-strip-json-comments');
 var criticalStream = require('critical').stream;
+var log = require('fancy-log');
 
 var CLIENT_FULL_PATH = "https://bigsouth.se/clients/"
 var CRITICAL_FILE = "index.html";
@@ -32,7 +33,7 @@ const versionConfig = {
 };
 
 function swallowError(error) {
-    console.log(error.toString())
+    log.error(error.toString())
     this.emit('end')
 }
 
@@ -88,7 +89,7 @@ gulp.task('deploy', function() {
     var props = JSON.parse(fileContent);
     var subdir = props.name;
 
-    console.log("\nFound project name in package.json: " + color(subdir, 'yellow') + "\n");
+    log("\nFound project name in package.json: " + color(subdir, 'yellow') + "\n");
     return gulp.src('build/**')
         .pipe(prompt.confirm("Deploy to: " + CLIENT_FULL_PATH + color(subdir, 'red') + "?"))
         .pipe(rsync({
@@ -101,13 +102,13 @@ gulp.task('deploy', function() {
 
 
 gulp.task('critical', ['build'], function(cb) {
-    console.log("Generating critical css for " + color(CRITICAL_FILE, 'yellow'));
+    log("Generating critical css for " + color(CRITICAL_FILE, 'yellow'));
     critical.generate(criticalParams);
 });
 
 // Generate & Inline Critical-path CSS
 gulp.task('critical-multiple', ['build'], function () {
-  console.log("Generating critical css to criticalCSS folder");
+  log("Generating critical css to criticalCSS folder");
 
   return gulp.src('build/*.html')
     .pipe(criticalStream({
@@ -128,7 +129,7 @@ gulp.task('critical-multiple', ['build'], function () {
 });
 
 gulp.task('critical-watch', ['watch'], function(cb) {
-    console.log("Generating critical css for " + color(CRITICAL_FILE, 'yellow'));
+    log("Generating critical css for " + color(CRITICAL_FILE, 'yellow'));
     critical.generate(criticalParams);
 });
 
@@ -141,7 +142,7 @@ gulp.task('browserSync', function() {
 })
 
 gulp.task('clean', function() {
-    console.log("Cleaning build directory");
+    log("Cleaning build directory");
     return gulp.src('build/', { read: false })
         .on('error', swallowError)
         .pipe(clean());
@@ -151,7 +152,6 @@ gulp.task('sass', function() {
     return gulp.src(paths.sass.src)
         .pipe(sass({
             sourcemaps: true,
-            includePaths: [bourbon, neat],
             outputStyle: 'compressed',
         }))
         .on('error', swallowError)
@@ -175,18 +175,19 @@ gulp.task('html-include', function() {
 });
 
 gulp.task('compile-js', function() {
-    console.log("Moving all .js files in js folder");
+    log("Moving all .js files in js folder");
     gulp.src(paths.js.src)
+        .pipe(sourcemaps.init())
         .pipe(babel())
         .on('error', swallowError)
         .pipe(minify({
             ext: {
-                src: '-debug.js',
                 min: '.min.js'
             },
             exclude: ['tasks'],
             ignoreFiles: ['.combo.js', '-min.js']
         }))
+        .pipe(sourcemaps.write('.'))
         .on('error', swallowError)
         .pipe(gulp.dest(paths.js.dest))
         .pipe(browserSync.reload({
@@ -195,7 +196,7 @@ gulp.task('compile-js', function() {
 });
 
 gulp.task('move-external-js', function() {
-    console.log("Moving all .js files in the external js folder");
+    log("Moving all .js files in the external js folder");
     gulp.src(paths.external_js.src)
         .on('error', swallowError)
         .pipe(minify({
@@ -209,7 +210,7 @@ gulp.task('move-external-js', function() {
 });
 
 gulp.task('move-css', function() {
-    console.log("Moving and minifies all .css files in css folder");
+    log("Moving and minifies all .css files in css folder");
     gulp.src(paths.css.src)
         .pipe(minifyCSS())
         .on('error', swallowError)
@@ -217,14 +218,14 @@ gulp.task('move-css', function() {
 });
 
 gulp.task('move-img', function() {
-    console.log("Moving all images");
+    log("Moving all images");
     gulp.src(paths.img.src)
         .on('error', swallowError)
         .pipe(gulp.dest(paths.img.dest));
 });
 
 gulp.task('move-fonts', function() {
-    console.log("Moving all fonts");
+    log("Moving all fonts");
     gulp.src(paths.fonts.src)
         .on('error', swallowError)
         .pipe(gulp.dest(paths.fonts.dest));
@@ -239,5 +240,6 @@ gulp.task('watch', ['browserSync', 'sass', 'move-fonts', 'move-css', 'html-inclu
     gulp.watch('src/assets/img/*', ['move-img']);
     gulp.watch('src/assets/js/**/*.js', ['compile-js', 'move-external-js']);
 });
+
 
 gulp.task('build', ['sass', 'move-fonts', 'move-css', 'html-include', 'compile-js', 'move-external-js', 'move-img']);
