@@ -1,6 +1,7 @@
-$mobileportrait: new-breakpoint(max-width 480px);
-$mobile: new-breakpoint(max-width 668px);
+$mobileportrait: append(max-width 480px, 12);
+$mobile: append(max-width 668px, 12);
 $tablet: append(max-width 768px, 12);
 $tabletlandscape: append(max-width 1024px, 12);
+$desktop-min: append(min-width 769px, 12);
 $desktop: append(max-width 1440px, 12);
 $oversizedesktop: append(max-width 1600px, 12);
