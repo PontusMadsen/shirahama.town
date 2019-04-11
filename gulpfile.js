@@ -66,6 +66,10 @@ var paths = {
         src: 'src/assets/img/*',
         dest: 'build/assets/img',
     },
+    favicon: {
+        src: 'src/favicon/*',
+        dest: 'build/',
+    }
 }
 
 var criticalParams = {
@@ -231,7 +235,14 @@ gulp.task('move-fonts', function() {
         .pipe(gulp.dest(paths.fonts.dest));
 });
 
-gulp.task('watch', ['browserSync', 'sass', 'move-fonts', 'move-css', 'html-include', 'compile-js', 'move-external-js', 'move-img'], function() {
+gulp.task('move-favicon', function() {
+    log("Moving all favicons");
+    gulp.src(paths.favicon.src)
+        .on('error', swallowError)
+        .pipe(gulp.dest(paths.favicon.dest));
+});
+
+gulp.task('watch', ['browserSync', 'sass', 'move-fonts', 'move-css', 'html-include', 'compile-js', 'move-external-js', 'move-img', 'move-favicon'], function() {
     gulp.watch('src/**/*.scss',['sass','html-include']);
     gulp.watch('src/**/*.html', browserSync.reload);
     gulp.watch('src/**/*.html', ['html-include']);
@@ -242,4 +253,4 @@ gulp.task('watch', ['browserSync', 'sass', 'move-fonts', 'move-css', 'html-inclu
 });
 
 
-gulp.task('build', ['sass', 'move-fonts', 'move-css', 'html-include', 'compile-js', 'move-external-js', 'move-img']);
+gulp.task('build', ['sass', 'move-fonts', 'move-css', 'html-include', 'compile-js', 'move-external-js', 'move-img', 'move-favicon']);

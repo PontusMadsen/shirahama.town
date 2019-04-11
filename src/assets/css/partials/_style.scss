@@ -1,21 +1,51 @@
-section {
-    //  border: 1px solid $black;
+section, div.section {
     margin: 0 auto;
 
     &.full {
+        width: 100%;
         max-width: 100%;
     }
 
     &.wide {
-        max-width: 1260px;
-        padding-left: 10px;
-        padding-right: 10px;
+        width: 100%;
+        max-width: $site-max-width;
+        padding-left: $basepadding;
+        padding-right: $basepadding;
+
+        @include media($mobile) {
+            padding-left: $basepaddingmobile;
+            padding-right: $basepaddingmobile;
+        }
+    }
+
+    &.wide-no-padding {
+        width: 100%;
+        max-width: $site-max-width;
+    }
+
+    &.wide-mega-no-padding {
+        width: 100%;
+        max-width: $site-max-mega-width;
+    }
+
+
+    &.wide-mega {
+        width: 100%;
+        max-width: $site-max-mega-width;
+        padding-left: $basepadding;
+        padding-right: $basepadding;
+
+        @include media($mobile) {
+            padding-left: $basepaddingmobile;
+            padding-right: $basepaddingmobile;
+        }
     }
 
     &.wide-to-full-on-mobile {
-        max-width: 1260px;
-        padding-left: 10px;
-        padding-right: 10px;
+        width: 100%;
+        max-width: $site-max-width;
+        padding-left: $basepadding;
+        padding-right: $basepadding;
 
         @include media($mobile) {
             padding-left: 0px;
@@ -23,20 +53,3 @@ section {
         }
     }
 }
-
-.black {
-    background-color: $black;
-}
-
-.lightgray {
-    background-color: $lightgray;
-}
-
-.pink {
-    background-color: $pink;
-}
-
-.yellow {
-    background-color: $yellow;
-}
-

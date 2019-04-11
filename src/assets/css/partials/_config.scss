@@ -95,6 +95,18 @@ $basefontbackgroundcolor: $lightestneutralcolor;
 // Set a default duration for CSS transitions
 $transitionduration: .25s;
 
+// Padding
+$basepadding: 25px;
+$basepaddingmobile: 15px;
+
+// Width variables
+$site-max-width: 1340px;
+$max-width: 1340px;
+$site-max-mega-width: 1730px;
+
+// Site border size
+$siteborder: 10px;
+
 @function z($name) {
     @if index($z-indexes, $name) {
         @return (length($z-indexes) - index($z-indexes, $name)) + 1;
