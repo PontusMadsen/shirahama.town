@@ -203,13 +203,6 @@ gulp.task('move-external-js', function() {
     log("Moving all .js files in the external js folder");
     gulp.src(paths.external_js.src)
         .on('error', swallowError)
-        .pipe(minify({
-            ext: {
-                min: '.min.js'
-            },
-            ignoreFiles: ['.combo.js', '-min.js']
-        }))
-        .on('error', swallowError)
         .pipe(gulp.dest(paths.external_js.dest));
 });
 
