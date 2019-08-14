@@ -48,8 +48,8 @@ body {
     letter-spacing: auto;
     color: $textcolor;
 
-    h1 {
-    }
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body:after {
