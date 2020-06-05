@@ -4,7 +4,6 @@ var sourcemaps = require('gulp-sourcemaps');
 var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
-var include = require('gulp-html-tag-include');
 var autoprefix = require("gulp-autoprefixer");
 var minifyCSS = require('gulp-minify-css');
 var clean = require('gulp-clean');
@@ -24,6 +23,9 @@ var log = require('fancy-log');
 var CLIENT_FULL_PATH = "https://bigsouth.se/clients/"
 var CRITICAL_FILE = "index.html";
 
+var twig = require('gulp-twig');
+var data = require('gulp-data');
+
 const versionConfig = {
   'value': '%MDS%',
   'append': {
@@ -39,7 +41,7 @@ function swallowError(error) {
 
 var paths = {
     html: {
-        src: ['./src/**/*.html', '!./src/**/partials/**/*.html'],
+        src: ['./src/**/*.twig', '!./src/**/partials/**/*.twig', '!./src/**/components/**/*.twig'],
         dest: './build/',
     },
     sass: {
@@ -171,7 +173,11 @@ gulp.task('sass', function() {
 
 gulp.task('html-include', function() {
     return gulp.src(paths.html.src)
-        .pipe(include())
+        .pipe(data(function(file) {
+          return JSON.parse(fs.readFileSync('./site-info.json'));
+        }))
+        .on('error', swallowError)
+        .pipe(twig())
         .on('error', swallowError)
         .pipe(versionNumber(versionConfig))
         .on('error', swallowError)
@@ -237,8 +243,8 @@ gulp.task('move-favicon', function() {
 
 gulp.task('watch', ['browserSync', 'sass', 'move-fonts', 'move-css', 'html-include', 'compile-js', 'move-external-js', 'move-img', 'move-favicon'], function() {
     gulp.watch('src/**/*.scss',['sass','html-include']);
-    gulp.watch('src/**/*.html', browserSync.reload);
-    gulp.watch('src/**/*.html', ['html-include']);
+    gulp.watch('src/**/*.twig', ['html-include', browserSync.reload]);
+    gulp.watch('site-info.json', ['html-include', browserSync.reload]);
     gulp.watch('src/assets/css/fonts/*', ['move-fonts']);
     gulp.watch('src/assets/css/**/*.css', ['move-css']);
     gulp.watch('src/assets/img/*', ['move-img']);

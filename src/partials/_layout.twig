@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="{{ lang }}" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <!-- Viewport for responsive web design -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+        {% if pageTitle != '' %}
+            <title>{{ pageTitle }}</title>
+        {% else %}
+            <title>{{ ogSiteName }}</title>
+        {% endif %}
+
+        <meta name="description" content="">
+
+        <link rel="canonical" href="">
+
+        <meta http-equiv="content-language" content="{{ lang }}">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <!-- Try critical CSS, yes? https://github.com/addyosmani/critical -->
+        <link rel="stylesheet" href="assets/css/external/reset.css" type="text/css">
+        <link rel="stylesheet" href="assets/css/external/animate.css" type="text/css">
+        <link rel="stylesheet" href="assets/css/big-south.css" type="text/css">
+        <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+
+        {# Defaults set in site-info.json #}
+        <meta property="og:type" content="{{ ogType }}">
+        <meta property="og:url" content="{{ ogUrl }}">
+        <meta property="og:title" content="{{ ogTitle }}">
+        <meta property="og:description" content="{{ ogDescription }}">
+
+        <meta property="og:image" content="{{ ogImage }}">
+        <meta property="og:image:width"  content="{{ ogImageWidth }}"/>
+        <meta property="og:image:height"  content="{{ ogImageHeight }}"/>
+
+        <meta property="og:site_name" content="{{ ogSiteName }}">
+        <meta property="og:locale" content="{{ ogLocale }}">
+    </head>
+    <body>
+
+        {# Display the current page's content #}
+        {% block page %}{% endblock %}
+
+        <script defer type="text/javascript" src="assets/js/external/ofi.min.js"></script>
+        <script defer type="text/javascript" src="assets/js/index.min.js"></script>
+    </body>
+</html>
+
