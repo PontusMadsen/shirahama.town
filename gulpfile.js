@@ -96,13 +96,14 @@ gulp.task('deploy', function() {
     var subdir = props.name;
 
     log("\nFound project name in package.json: " + color(subdir, 'yellow') + "\n");
-    return gulp.src('build/**')
+    return gulp.src('build/')
         .pipe(prompt.confirm("Deploy to: " + CLIENT_FULL_PATH + color(subdir, 'red') + "?"))
         .pipe(rsync({
             root: 'build/',
             hostname: 'eepnl2-01.nexcess.net',
             username: 'bigsouth',
             destination: 'bigsouth.se/html/clients/' + subdir,
+            recursive: true
         }));;
 });
 
