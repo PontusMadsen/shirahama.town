@@ -20,7 +20,7 @@ var stripComments = require('gulp-strip-json-comments');
 var criticalStream = require('critical').stream;
 var log = require('fancy-log');
 
-var CLIENT_FULL_PATH = "https://bigsouth.se/clients/"
+var CLIENT_FULL_PATH = "https://www.softa.nu/view/"
 var CRITICAL_FILE = "index.html";
 
 var twig = require('gulp-twig');
@@ -102,7 +102,7 @@ gulp.task('deploy', function() {
             root: 'build/',
             hostname: 'eepnl2-01.nexcess.net',
             username: 'bigsouth',
-            destination: 'bigsouth.se/html/clients/' + subdir,
+            destination: 'softa.nu/html/view/' + subdir,
             recursive: true
         }));;
 });
