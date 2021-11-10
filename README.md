@@ -1,4 +1,4 @@
-# Base project for markup used for kodexe (*no neat/bourbon*)
+# Base project for markup (*no neat/bourbon*)
 
 ## First time using this repository?
 - If you do not have Node installed already, you can get it by downloading the package installer from [Node's website](https://nodejs.org/en/).

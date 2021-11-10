@@ -13,11 +13,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org:bigsouth/white-label-markup.git"
+    "url": "git+ssh://PontusMadsen@github.com/PontusMadsen/white-label-markup-master.git"
   },
-  "author": "Big South",
+  "author": "reizoko",
   "license": "ISC",
-  "homepage": "https://www.bigsouth.se/",
+  "homepage": "https://www.reizoko.jp/",
   "babel": {
     "presets": [
       "es2015"

@@ -102,7 +102,7 @@ gulp.task('deploy', function() {
             root: 'build/',
             hostname: 'eepnl2-01.nexcess.net',
             username: 'bigsouth',
-            destination: 'softa.nu/html/view/' + subdir,
+            destination: 'reizoko.jp/html/view/' + subdir,
             recursive: true
         }));;
 });
