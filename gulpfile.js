@@ -20,7 +20,7 @@ var stripComments = require('gulp-strip-json-comments');
 var criticalStream = require('critical').stream;
 var log = require('fancy-log');
 
-var CLIENT_FULL_PATH = "https://www.softa.nu/view/"
+var CLIENT_FULL_PATH = "https://www.reizoko.jp/view/"
 var CRITICAL_FILE = "index.html";
 
 var twig = require('gulp-twig');
@@ -100,7 +100,7 @@ gulp.task('deploy', function() {
         .pipe(prompt.confirm("Deploy to: " + CLIENT_FULL_PATH + color(subdir, 'red') + "?"))
         .pipe(rsync({
             root: 'build/',
-            hostname: 'eepnl2-01.nexcess.net',
+            hostname: 'eepnl1-01.nexcess.net',
             username: 'bigsouth',
             destination: 'reizoko.jp/html/view/' + subdir,
             recursive: true
