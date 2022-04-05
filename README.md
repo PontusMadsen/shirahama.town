@@ -148,7 +148,10 @@ Use `<include>`-tags to include other templates in the current template. The fol
 ```html
 <include src="tabs.html"></include>
 ```
-
+or
+```{# Include the navigation #}
+{% include 'partials/navigation.twig' %}
+```
 
 #### Using template variables
 Using the following templates:
