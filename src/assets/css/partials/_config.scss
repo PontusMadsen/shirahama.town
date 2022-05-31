@@ -10,10 +10,16 @@ $textcolor: #000;
 
 $grid-columns: 12 !default;
 
+// Gutters
 $gutter: 1em;
+$gutter-half: 0.5em;
 $baselineheight: 21px;
 $objectgutter: 60px;
 $modulegutter: 120px;
+
+// Padding
+$basepadding: 25px;
+$basepaddingmobile: 15px;
 
 // Does your design needs a maximum width to maintain readable line lengths?
 $maxwidth: 90em;
@@ -94,10 +100,6 @@ $basefontbackgroundcolor: $lightestneutralcolor;
 
 // Set a default duration for CSS transitions
 $transitionduration: .25s;
-
-// Padding
-$basepadding: 25px;
-$basepaddingmobile: 15px;
 
 // Width variables
 $site-max-width: 1340px;
