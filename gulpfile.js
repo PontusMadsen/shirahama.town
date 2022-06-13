@@ -100,8 +100,8 @@ gulp.task('deploy', function() {
         .pipe(prompt.confirm("Deploy to: " + CLIENT_FULL_PATH + color(subdir, 'red') + "?"))
         .pipe(rsync({
             root: 'build/',
-            hostname: 'eepnl1-01.nexcess.net',
-            username: 'bigsouth',
+            hostname: 'e1eff57cf9.nxcli.net',
+            username: 'a5ad91f1_1',
             destination: 'reizoko.jp/html/view/' + subdir,
             recursive: true
         }));;
