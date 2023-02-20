@@ -1,0 +1,16 @@
+
+Grid stuff:
+
+@include display-grid;
+@include grid-columns(repeat(12, 1fr));
+
+@include grid-child(2,6,1,2);
+
+
+Toggle stuff with jQuery:
+
+$( ".toggle-referal" ).click(function() {
+    event.preventDefault();
+    $( ".refer-a-friend-holder" ).toggleClass("visible");
+    $( "body" ).toggleClass("mobile-nav-toggle");
+});
