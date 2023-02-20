@@ -20,7 +20,8 @@ var stripComments = require('gulp-strip-json-comments');
 var criticalStream = require('critical').stream;
 var log = require('fancy-log');
 
-var CLIENT_FULL_PATH = "https://www.reizoko.jp/view/"
+var CLIENT_FULL_PATH_REIZOKO = "https://www.reizoko.jp/view/"
+var CLIENT_FULL_PATH_BIGSOUTH = "https://www.bigsouth.se/clients/"
 var CRITICAL_FILE = "index.html";
 
 var twig = require('gulp-twig');
@@ -90,19 +91,36 @@ var criticalParams = {
     }],
 };
 
-gulp.task('deploy', function() {
+gulp.task('deploy-reizoko', function() {
     var fileContent = fs.readFileSync("./package.json", "utf8");
     var props = JSON.parse(fileContent);
     var subdir = props.name;
 
     log("\nFound project name in package.json: " + color(subdir, 'yellow') + "\n");
     return gulp.src('build/')
-        .pipe(prompt.confirm("Deploy to: " + CLIENT_FULL_PATH + color(subdir, 'red') + "?"))
+        .pipe(prompt.confirm("Deploy to: " + CLIENT_FULL_PATH_REIZOKO + color(subdir, 'red') + "?"))
         .pipe(rsync({
             root: 'build/',
-            hostname: 'e1eff57cf9.nxcli.net',
-            username: 'a5ad91f1_1',
+            hostname: '6c303dcef3.nxcli.io',
+            username: 'af4f72fd_1',
             destination: 'reizoko.jp/html/view/' + subdir,
+            recursive: true
+        }));;
+});
+
+gulp.task('deploy-bigsouth', function() {
+    var fileContent = fs.readFileSync("./package.json", "utf8");
+    var props = JSON.parse(fileContent);
+    var subdir = props.name;
+
+    log("\nFound project name in package.json: " + color(subdir, 'yellow') + "\n");
+    return gulp.src('build/')
+        .pipe(prompt.confirm("Deploy to: " + CLIENT_FULL_PATH_BIGSOUTH + color(subdir, 'red') + "?"))
+        .pipe(rsync({
+            root: 'build/',
+            hostname: '6c303dcef3.nxcli.io',
+            username: 'af4f72fd_1',
+            destination: 'bigsouth.se/html/clients/' + subdir,
             recursive: true
         }));;
 });

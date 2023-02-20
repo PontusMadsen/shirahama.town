@@ -8,7 +8,8 @@
     "build ": "gulp critical",
     "build:clean": "gulp clean && gulp critical",
     "build:all-critical": "gulp clean && gulp critical-multiple",
-    "deploy": "gulp clean && gulp build && gulp deploy",
+    "deploy-reizoko": "gulp clean && gulp build && gulp deploy-reizoko",
+    "deploy-bigsouth": "gulp clean && gulp build && gulp deploy-bigsouth",
     "deploy-critical": "gulp clean && gulp critical && gulp deploy"
   },
   "repository": {
