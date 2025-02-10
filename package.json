@@ -1,7 +1,7 @@
 {
-  "name": "white-label",
+  "name": "shirahama-town",
   "version": "1.0.0",
-  "description": "Default project structure",
+  "description": "shirahama.town",
   "main": "index.js",
   "scripts": {
     "start": "gulp watch",

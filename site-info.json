@@ -1,12 +1,12 @@
 {
-  "ogUrl": "",
-  "ogTitle": "",
-  "ogDescription": "",
-  "ogSiteName": "",
+  "ogUrl": "shirahama.town",
+  "ogTitle": "shirahama.town",
+  "ogDescription": "shirahama.town",
+  "ogSiteName": "shirahama.town",
   "ogImage": "",
   "ogImageWidth": "722",
   "ogImageHeight": "563",
   "ogType": "website",
-  "ogLocale": "sv",
-  "lang": "sv"
+  "ogLocale": "en",
+  "lang": "en"
 }
