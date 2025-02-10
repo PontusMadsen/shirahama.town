@@ -40,7 +40,9 @@ body {
 
     background-color: $bodycolor;
     width: 100%;
-    font-family: $basefontfamily;
+    font-family: "ab-megadot9", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 
     @include font-size($basefontsize);
 
@@ -48,8 +50,8 @@ body {
     letter-spacing: auto;
     color: $textcolor;
 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    // -webkit-font-smoothing: antialiased;
+    // -moz-osx-font-smoothing: grayscale;
 }
 
 body:after {
@@ -57,18 +59,63 @@ body:after {
     display: none;
 }
 
+main {
+    padding-top: 150px;
+}
+
 /* Common  */
 
 a {
-    color: $pink;
+    color: $black;
     text-decoration: none;
-
-    @include transition(all 0.2s ease-in-out);
-
-    &:hover {
-        color: $linkcolorhover;
-        text-decoration: none;
+    position: relative;
+    &:after {
+        @include transition(all 0.2s ease-in-out);
+        content: '';
+        height:2px;
+        width:100%;
+        background-color: $black;
+        position: absolute;
+        bottom:-5px;
+        left:0;
+        z-index: -1;
     }
+    &:before {
+        @include transition(all 0.2s ease-in-out);
+        content: '';
+        height:calc(100% + 10px);
+        width:0%;
+        background-color: $black;
+        position: absolute;
+        top:-5px;
+        left:-5px;
+        z-index: -1;
+    }
+    &:hover {
+        @include transition(all 0.2s ease-in-out);
+        color:$white;
+        &:before {
+            @include transition(all 0.2s ease-in-out);
+            content: '';
+            width:calc(100% + 10px);
+            background-color: $black;
+            position: absolute;
+            color:$white;
+            z-index: -1;
+        }
+    }
+}
+
+.curtain-shade-thingie {
+    background-image: url('../img/curtain-shade-thingie.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    pointer-events: none;
 }
 
 small {}

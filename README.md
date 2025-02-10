@@ -2,7 +2,7 @@
 
 ## About
 
-Shirahama.town is a website for shirahama.town.
+Shirahama.town is a website for shirahama.town. For starters, just a digital playground for me and my shirahama'entric projects. But in the future, more things will be added. Like reviews, a blog, and a gallery. Who knows.
 
 ## License
 

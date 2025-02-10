@@ -19,6 +19,17 @@
         <meta http-equiv="content-language" content="{{ lang }}">
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
+        <script>
+            (function(d) {
+              var config = {
+                kitId: 'vtv7iyd',
+                scriptTimeout: 3000,
+                async: true
+              },
+              h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+            })(document);
+        </script>
+
         <link rel="stylesheet" href="assets/css/external/reset.css" type="text/css">
         <link rel="stylesheet" href="assets/css/external/animate.min.css" type="text/css">
         <link rel="stylesheet" href="assets/css/reizoko.css" type="text/css">
@@ -41,8 +52,22 @@
     <body>
 
         {# Display the current page's content #}
-        {% block page %}{% endblock %}
-
+        <div class="curtain-shade-thingie"></div>
+        {% include "_nav.twig" %}
+        <main>
+            {% block page %}{% endblock %}
+        </main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        {# <script>
+            $(window).scroll(function() {
+                var scrolled = $(window).scrollTop();
+                var minTranslation = 10; // Minimum pixels to scroll
+                
+                // Invert scroll direction with negative multiplier
+                var translation = Math.min(scrolled * -0.03, minTranslation);
+                $('.curtain-shade-thingie').css('transform', 'translateY(' + translation + 'px)');
+            });
+        </script> #}
         <script defer type="text/javascript" src="assets/js/external/ofi.min.js"></script>
         <script defer type="text/javascript" src="assets/js/index.min.js"></script>
     </body>
