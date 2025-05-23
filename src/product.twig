@@ -1,0 +1,78 @@
+{% extends "partials/_layout.twig" %}
+
+{# Set the page title #}
+{% set pageTitle = 'shirahama.town' %}
+
+{% block page %}
+	{# Start writing code! #}
+	<section class="wide product-page-section">
+
+		<div class="left-column">
+			<div class="content">
+				<h4>Coming soon</h4>
+				<h1>District of yuzaki / Shirahama</h1>
+				<h4 class="price">JPY 4.500</h4>
+				<h4>Description</h4>
+				<h2>Represent the yuzaki District with pride!</h2>
+				<p>
+					order made and Hand printed in Shirahama, Japan.
+					Prints might vary, but that's what's awesome with
+					supporting Small Local businesses.
+				</p>
+			</div>
+		</div>
+		<div class="center-column">
+			<div class="content">
+				<img src="assets/img/Group-33.jpg" alt="District of Yuzaki t-shirt" class="default-img" />
+				<img src="assets/img/U24A103.jpg" alt="District of Yuzaki t-shirt back view" class="hover-img" />
+				<img src="assets/img/0_0-4cc.jpg" alt="District of Yuzaki t-shirt back view" class="hover-img" />
+				<img src="assets/img/0_3-3x.jpg" alt="District of Yuzaki t-shirt back view" class="hover-img" />
+				<img src="assets/img/0_0-x5.jpg" alt="District of Yuzaki t-shirt back view" class="hover-img" />
+				<img src="assets/img/0_0-4.jpg" alt="District of Yuzaki t-shirt" class="default-img" />
+				<img src="assets/img/FREE-Outdoor-T-Shirt-Mockup.jpg" alt="District of Yuzaki t-shirt" class="default-img" />
+				<img src="assets/img/10.jpg" alt="District of Yuzaki t-shirt back view" class="hover-img" />
+				<img src="assets/img/Tooooools-App-Image.jpg" alt="District of Yuzaki t-shirt" class="default-img" />
+				<img src="assets/img/0_1-7.jpg" alt="District of Yuzaki t-shirt" class="default-img" />
+				<img src="assets/img/0_2-4.jpg" alt="District of Yuzaki t-shirt" class="default-img" />
+				<img src="assets/img/0_2-3.jpg" alt="District of Yuzaki t-shirt back view" class="hover-img" />
+			</div>
+		</div>
+		<div class="right-column">
+			<div class="content">
+				<div class="one-row">
+					<span>
+						size
+					</span>
+					<div class="radio-holder">
+						<input type="radio" name="size" id="size-small" value="small" checked>
+						<label for="size-small">S</label>
+						<input type="radio" name="size" id="size-medium" value="medium">
+						<label for="size-medium">M</label>
+						<input type="radio" name="size" id="size-large" value="large">
+						<label for="size-large">L</label>
+						<input type="radio" name="size" id="size-xlarge" value="xlarge">
+						<label for="size-xlarge">XL</label>
+					</div>
+				</div>
+				<div class="one-row">
+					<span>
+						Quantity
+					</span>
+					<div class="radio-holder">
+						<input type="radio" name="quantity" id="one" value="1" checked>
+						<label for="one">One</label>
+						<input type="radio" name="quantity" id="two" value="2">
+						<label for="two">Two</label>
+						<input type="radio" name="quantity" id="three" value="3">
+						<label for="three">Three</label>
+					</div>
+				</div>
+				<div class="one-row no-dash">
+					<button>Buy this shirt</button>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+{% endblock %}

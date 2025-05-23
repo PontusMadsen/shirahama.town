@@ -1,0 +1,141 @@
+.product-page-section {
+    @include flexbox;
+    @include display-grid;
+    @include grid-columns(repeat(12, 1fr));
+    .left-column {
+        @include grid-child(1,5,1,2);
+        position: relative;
+        z-index: z(left-column);
+        // background-color: beige;
+        .content {
+            position: sticky;
+            top:150px;
+            // margin: 20px;
+            // background-color: green;
+            h1 {
+                margin-bottom: 10px;
+            }
+            h4 {
+                margin-bottom: 10px;
+                color: rgba(0,0,0,0.4);
+                &.price {
+                    margin-bottom: 15px;
+                    padding-bottom: $basepadding;
+                    border-bottom: 2px solid $black;
+                }
+            }
+            h2 {
+                margin-bottom: $basepadding/2;
+                line-height: 1.5em;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+    .center-column {
+        @include grid-child(4,10,1,2);
+        // background-color: aqua;
+        z-index: z(center-column);
+        .content {
+            margin: 0px 20px;
+            // height:1800px;
+            // background-color: blueviolet;
+            margin-bottom: 50px;
+            @include flexbox;
+            flex-direction: column;
+            img {
+                // padding-right: 20px; /* $basepadding equivalent */
+                &:not(:last-child) {
+                    margin-bottom: $basepadding;
+                }
+            }
+        }
+    }
+    .right-column {
+        @include grid-child(10,13,1,2);
+        position: relative;
+        // background-color: beige;
+        z-index: z(right-column);
+        .content {
+            // position: sticky;
+            // top:150px;
+            position: sticky;
+            top:calc(100vh - 300px);
+            // opacity: 0.3;
+            // margin: 20px;
+            // background-color: green;
+            margin-bottom: $basepadding*2;
+            .one-row {
+                border-top: 2px solid $black;
+                padding-top: $basepadding;
+                padding-bottom: $basepadding;
+                @include flexbox;
+                align-items: flex-start;
+                justify-content: space-between;
+                span {
+                    font-size: 14px;
+                    color: rgba(0,0,0,0.4);
+                    display: inline-block;
+                    line-height: 1em;
+                }
+                ul {
+                    margin:0;
+                    padding: 0;
+                    @include flexbox;
+                    align-items: center;
+                    justify-content: space-between;
+                    li {
+                        font-size: 21px;
+                        color: rgba(0,0,0,0.4);
+                        margin-right: 10px;
+                        list-style: none;
+                        margin-right: 10px;
+                        &:last-child {
+                            margin-right: 10px;
+                        }
+                        a {
+                            padding: 0px 5px;
+                        }
+                        &.inactive {
+                            a {
+                                cursor: none;
+                                pointer-events: none;
+                                color: rgba(0,0,0,0.2);
+                                &:after {
+                                    @include transition(all 0.2s ease-in-out);
+                                    content: '';
+                                    height:2px;
+                                    width:100%;
+                                    background-color: $black;
+                                    position: absolute;
+                                    bottom:50%;
+                                    left:0;
+                                    z-index: -1;
+                                }
+                            }
+                        }
+                    }
+                }   
+                &.no-dash {
+                    border-top: 0px solid $black;
+                    padding-bottom: 0;
+                    button {
+                        width:100%;
+                        padding: 20px;
+                        text-transform: uppercase;
+                        background-color: $black;
+                        color: $white;
+                        @include transition(all 0.2s ease-in-out);
+                        &:hover {
+                            background-color: $white;
+                            color: $black;
+                            @include transition(all 0.2s ease-in-out);
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
