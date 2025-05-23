@@ -1,0 +1,155 @@
+.index-page-section {
+    @include flexbox;
+    @include display-grid;
+    @include grid-columns(repeat(12, 1fr));
+    .left-column {
+        @include grid-child(1,4,1,2);
+        position: relative;
+        // background-color: beige;
+        .content {
+            position: sticky;
+            top:150px;
+            // margin: 20px;
+            // background-color: green;
+            h1 {
+                margin-bottom: $basepadding;
+                padding-bottom: $basepadding;
+                border-bottom: 2px solid $black;
+            }
+        }
+    }
+    .center-column {
+        @include grid-child(4,10,1,2);
+        // background-color: aqua;
+        .content {
+            margin: 0px 20px;
+            // height:1800px;
+            // background-color: blueviolet;
+            margin-bottom: $modulegutter;
+            @include flexbox;
+            flex-direction: column;
+            .item {
+                width: 100%;
+                // overflow: hidden;
+                @include flexbox;
+                align-items: center;
+                margin-bottom: $basepadding;
+                &.inverted {
+                    flex-direction: row-reverse;
+                }
+            }
+
+            .image {
+                width: 50%;
+                position: relative;
+                padding-right: 20px; /* $basepadding equivalent */
+                z-index: 1;
+            }
+
+            .image a {
+                position: relative;
+                display: block;
+            }
+
+            .image a:after {
+                transition: all 0.2s ease-in-out;
+                content: '';
+                height: 0px;
+                width: 0%;
+                background-color: #000;
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                z-index: -1;
+            }
+
+            .image a:before {
+                transition: all 0.2s ease-in-out;
+                content: '';
+                height: 0;
+                width: 0%;
+                background-color: #000;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                z-index: -1;
+            }
+
+            .image a:hover {
+                transition: all 0.2s ease-in-out;
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .image a:hover:before {
+                transition: all 0.2s ease-in-out;
+                content: '';
+                width: 0;
+                background-color: #000;
+                position: absolute;
+                color: #fff;
+                z-index: -1;
+            }
+
+            .image img {
+                object-fit: cover;
+                display: block;
+                transform: scale(1);
+                transition: all 0.2s ease-in-out;
+            }
+
+            .image .hover-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .image:hover img {
+                transform: scale(1.02);
+                transition: all 0.2s ease-in-out;
+            }
+
+            .text {
+                padding: 0px;
+            }
+
+            .text .status {
+                opacity: 0.5;
+                font-size: 12px;
+                margin: 0 0 10px 0;
+            }
+
+            .text h3 {
+                margin: 0 0 10px 0;
+                font-size: 18px;
+            }
+
+            .text .price {
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+    }
+    .right-column {
+        @include grid-child(10,13,1,2);
+        position: relative;
+        // background-color: beige;
+        .content {
+            // position: sticky;
+            // top:150px;
+            position: sticky;
+            top:calc(100vh - 290px);
+            opacity: 0.3;
+            // margin: 20px;
+            // background-color: green;
+            margin-bottom: $basepadding*2;
+            h2 {
+                margin-bottom: $basepadding;
+                padding-bottom: $basepadding;
+                border-bottom: 2px solid $black;
+            }
+        }
+    }
+}

@@ -57,6 +57,41 @@
         <main>
             {% block page %}{% endblock %}
         </main>
+        <section class="stuff">
+            <section class="wide content">
+                <a href="">Stores</a> /
+                <a href="">日本語</a>
+            </section>
+        </section>
+        <section class="wide footer-holder">
+            <footer>
+                <div class="content">
+                    <ul>
+                        <li>
+                            <a href="">Stores</a>
+                        </li>
+                        <li>
+                            <a href="">Contact</a>
+                        </li>
+                        <li>
+                            <a href="">ABOUT</a>
+                        </li>
+                        <li>
+                            <a href="">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="">Shipping</a>
+                        </li>
+                        <li>
+                            <a href="">日本語</a>
+                        </li>
+                    </ul>
+                    <p>
+                        (c) {{ "now"|date("Y") }} Pontus madsen & Distorted kids
+                    </p>
+                </div>
+            </footer>
+        </section>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         {# <script>
             $(window).scroll(function() {
@@ -68,6 +103,22 @@
                 $('.curtain-shade-thingie').css('transform', 'translateY(' + translation + 'px)');
             });
         </script> #}
+        <script>
+            $(document).ready(function() {
+                $('.image').hover(
+                    function() {
+                        // Mouse enter
+                        $(this).find('.default-img').css('opacity', '0');
+                        $(this).find('.hover-img').css('opacity', '1');
+                    },
+                    function() {
+                        // Mouse leave
+                        $(this).find('.default-img').css('opacity', '1');
+                        $(this).find('.hover-img').css('opacity', '0');
+                    }
+                );
+            });
+        </script>
         <script defer type="text/javascript" src="assets/js/external/ofi.min.js"></script>
         <script defer type="text/javascript" src="assets/js/index.min.js"></script>
     </body>
