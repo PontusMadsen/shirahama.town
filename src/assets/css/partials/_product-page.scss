@@ -30,6 +30,10 @@
             }
             p {
                 font-size: 14px;
+                span {
+                    background-color: $white;
+                    padding:2px 0px;
+                }
             }
         }
     }

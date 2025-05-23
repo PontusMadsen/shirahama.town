@@ -10,3 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	objectFitImages();
 
 });
+
+
+$( ".toggle-mini-cart" ).click(function() {
+    event.preventDefault();
+    $( ".cart-mini-holder" ).toggleClass("open");
+    // $( "body" ).toggleClass("mobile-nav-toggle");
+});
