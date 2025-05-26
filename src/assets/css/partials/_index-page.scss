@@ -6,6 +6,14 @@
         @include grid-child(1,4,1,2);
         position: relative;
         // background-color: beige;
+        @include media($tablet) {
+            @include grid-child(1,5,1,2);
+        }
+        @include media($mobile) {
+            @include grid-child(1,13,1,2);
+            margin-bottom: $basepadding*2;
+            text-align: center;
+        }
         .content {
             position: sticky;
             top:150px;
@@ -21,19 +29,36 @@
     .center-column {
         @include grid-child(4,10,1,2);
         // background-color: aqua;
+        @include media($tablet) {
+            @include grid-child(5,13,1,2);
+        }
+        @include media($mobile) {
+            @include grid-child(1,13,2,3);
+        }
         .content {
             margin: 0px 20px;
+            margin-top: -30px;
             // height:1800px;
             // background-color: blueviolet;
             margin-bottom: $modulegutter;
             @include flexbox;
             flex-direction: column;
+            @include media($tablet) {
+                margin-top: 0;
+                margin-bottom: $basepadding;
+            }   
+            @include media($mobile) {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
             .item {
                 width: 100%;
                 // overflow: hidden;
                 @include flexbox;
                 align-items: center;
                 margin-bottom: $basepadding;
+                // @include makeborder;
                 &.inverted {
                     flex-direction: row-reverse;
                 }
@@ -44,6 +69,7 @@
                 position: relative;
                 padding-right: 20px; /* $basepadding equivalent */
                 z-index: 1;
+                // @include makeborder;
             }
 
             .image a {
@@ -113,6 +139,7 @@
 
             .text {
                 padding: 0px;
+                width:50%;
             }
 
             .text .status {
@@ -136,6 +163,15 @@
         @include grid-child(10,13,1,2);
         position: relative;
         // background-color: beige;
+        @include media($tablet) {
+            @include grid-child(5,13,2,3);
+            padding-left: $basepadding;
+        }
+        @include media($mobile) {
+            @include grid-child(1,13,3,4);
+            padding-left: 0;
+        }
+
         .content {
             // position: sticky;
             // top:150px;
@@ -145,6 +181,12 @@
             // margin: 20px;
             // background-color: green;
             margin-bottom: $basepadding*2;
+            @include media($tabletlandscape) {
+                top:calc(100vh - 310px);
+            }
+            @include media($tablet) {
+                text-align: center;
+            }
             h2 {
                 margin-bottom: $basepadding;
                 padding-bottom: $basepadding;

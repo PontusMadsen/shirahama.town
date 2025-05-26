@@ -12,6 +12,9 @@ nav {
     position: fixed;
     width: 100%;
     z-index: z(site-header);
+    @include media($mobile) {
+        margin-top: 20px;
+    }
 
     ul {
         @include flexbox;    
