@@ -1,0 +1,108 @@
+{% extends "partials/_layout.twig" %}
+
+{# Set the page title #}
+{% set pageTitle = 'shirahama.town' %}
+
+{% block page %}
+	{# Start writing code! #}
+	<section class="wide cart-page-section">
+
+		<div class="left-column">
+			<div class="content">
+				<h4>Leaving already?</h4>
+				<h1>Your cart</h1>
+                <div class="cart-items">
+                    <div class="one-row header">
+                        <div class="flex-3">Item name</div>
+                        <div class="flex-1">Size</div>
+                        <div class="flex-1">quantity</div>
+                        <div class="flex-1">price</div>
+                        <div class="flex-none total">Total</div>
+                        <div class="flex-none trash">remove</div>
+                    </div>
+                    <div class="one-row">
+                        <div class="flex-3">
+                            The town of shirahama t-shirt
+                        </div>
+                        <div class="flex-1 size">
+                            Small
+                        </div>
+                        <div class="flex-1">
+                            <input class="numbers-input" type="number" value="2" name="qty[e06f56ae1427c3457d371e8c08728203]">
+                        </div>
+                        <div class="flex-1 price">
+                           <span class="yen">4.500</span>
+                        </div>
+                        <div class="flex-none total">
+                           <span class="yen">9.000</span>
+                        </div>
+                        <div class="flex-none trash">
+                            <a href="">
+                                <i class="fa-light fa-trash"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="one-row">
+                        <div class="flex-3">
+                            yuzaki t-shirt
+                        </div>
+                        <div class="flex-1 size">
+                            Medium
+                        </div>
+                        <div class="flex-1">
+                            <input class="numbers-input" type="number" value="1" name="qty[e06f56ae1427c3457d371e8c08728203]">
+                        </div>
+                        <div class="flex-1 price">
+                           <span class="yen">4.500</span>
+                        </div>
+                        <div class="flex-none total">
+                           <span class="yen">4.500</span>
+                        </div>
+                        <div class="flex-none trash">
+                            <a href="">
+                                <i class="fa-light fa-trash"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-items">
+                    <div class="one-row">
+                        <div class="flex-none headers">
+                            Subtotal
+                        </div>
+                        <div class="flex-none total">
+                            <span class="yen">13.500</span>
+                        </div>
+                        <div class="flex-none trash"></div>
+                    </div>
+                    <div class="one-row">
+                        <div class="flex-none headers">
+                            Shipping
+                        </div>
+                        <div class="flex-none total">
+                            <span class="yen">500</span>
+                        </div>
+                        <div class="flex-none trash"></div>
+                    </div>
+                    <div class="one-row">
+                        <div class="flex-none headers">
+                            Total
+                        </div>
+                        <div class="flex-none total">
+                            <span class="yen">14.000</span>
+                        </div>
+                        <div class="flex-none trash"></div>
+                    </div>
+                </div>
+
+                <div class="checkout-now">
+                    <a class="button" href="checkout.html">Checkout</a>
+                </div>
+
+            </div>
+		</div>
+
+	</section>
+
+{% endblock %}

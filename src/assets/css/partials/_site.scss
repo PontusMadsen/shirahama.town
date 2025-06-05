@@ -108,6 +108,59 @@ a {
             z-index: -1;
         }
     }
+    &.button {
+        width:100%;
+        max-width: 250px;
+        text-align: center;
+        padding: 15px 25px;
+        text-transform: uppercase;
+        background-color: $black;
+        border:2px solid $black;
+        color: $white;
+        @include transition(all 0.2s ease-in-out);
+        &:hover {
+            background-color: $white;
+            color: $black;
+            @include transition(all 0.2s ease-in-out);
+            cursor: pointer;
+        }
+       &:after {
+            @include transition(all 0.2s ease-in-out);
+            content: '';
+            height:0px;
+            width:0%;
+            background-color: $black;
+            position: absolute;
+            bottom:0px;
+            left:0;
+            z-index: -1;
+        }
+        &:before {
+            @include transition(all 0.2s ease-in-out);
+            content: '';
+            height:0;
+            width:0;
+            background-color: $white;
+            position: absolute;
+            top:0px;
+            left:0px;
+            z-index: -1;
+        }
+        &:hover {
+            @include transition(all 0.2s ease-in-out);
+            color:$black;
+            border:2px solid $black;
+            &:before {
+                @include transition(all 0.2s ease-in-out);
+                content: '';
+                width:0;
+                background-color: $black;
+                position: absolute;
+                color:$white;
+                z-index: -1;
+            }
+        }
+    }
 }
 
 .curtain-shade-thingie {
@@ -384,4 +437,32 @@ b, strong {
             }
         }
     }
+}
+
+.numbers-input {
+    width:50px;
+    text-align: center;
+    border-radius: 0;
+    border:1px solid $black;
+    font-size: 16px;
+    padding: 5px;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.yen {
+    &:before {
+        content: '\f157';
+        padding-right: 5px;
+        font-family: 'Font Awesome 6 Pro';
+    }   
 }

@@ -1,0 +1,245 @@
+.cart-page-section {
+    @include flexbox;
+    @include display-grid;
+    @include grid-columns(repeat(12, 1fr));
+    .left-column {
+        @include grid-child(1,13,1,2);
+        position: relative;
+        z-index: z(left-column);
+        // background-color: beige;
+        .content {
+            position: relative;
+            // top:150px;
+            // margin: 20px;
+            // background-color: green;
+            h1 {
+                margin-bottom: 10px;
+            }
+            h4 {
+                margin-bottom: 10px;
+                color: rgba(0,0,0,0.4);
+                &.price {
+                    margin-bottom: 15px;
+                    padding-bottom: $basepadding;
+                    border-bottom: 2px solid $black;
+                }
+            }
+            .cart-items {
+                margin-top: $basepadding;
+                margin-bottom: $basepadding*2;
+                .one-row {
+                    @include flexbox;
+                    align-items: center;
+                    justify-content: flex-start;
+                    text-transform: uppercase;
+                    position: relative;
+                    font-size: 21px;
+                    margin-bottom: $basepadding/2;
+                    padding-bottom: $basepadding/2;
+                    @include media($tablet) {
+                        // align-items: flex-start;
+                        flex-wrap: wrap;
+                        position: relative;
+                        margin-bottom: $basepadding;
+                    }
+                    &:after {
+                        content: '';
+                        height:2px;
+                        width:300px;
+                        background-color: $black;
+                        position: absolute;
+                        bottom:0;
+                        left:0;
+                        z-index: -1;
+                    }
+                    @include media($mobile) {
+                        // align-items: flex-start;
+                        flex-wrap: wrap;
+                        position: relative;
+                        margin-bottom: $basepadding;
+                        &:after {
+                            width:100%;
+                        }
+                    }
+                    &.header {
+                        margin-bottom: 10px;
+                        padding-bottom: 0;
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        opacity: 0.5;
+                        &:after {
+                            content: '';
+                            height:0px;
+                        }
+                        @include media($tablet) {
+                            display:none;
+                        }
+                    }
+                    .flex-1 {
+                        flex: 1;
+                        text-align: left;
+                        // @include makeborder;
+                        @include media($tablet) {
+                            // flex: none;
+                            // width:100%;
+                            margin-bottom: 15px;
+                            font-size: 14px;
+                        }
+                        @include media($mobile) {
+                            flex: none;
+                            width:50%;
+                        }
+                    }
+                    .flex-2 {
+                        flex: 2;
+                        text-align: left;
+                        // @include makeborder;
+                        @include media($tablet) {
+                            flex: none;
+                            width:100%;
+                            margin-bottom: 15px;
+                        }
+                    }
+                    .flex-3 {
+                        flex: 3;
+                        text-align: left;
+                        // @include makeborder;
+                        @include media($tablet) {
+                            flex: none;
+                            width:100%;
+                            margin-bottom: 15px;
+                        }
+                    }
+                    .flex-none {
+                        flex: none;
+                        width:50px;
+                    }
+                    .size {
+                        @include media($tablet) {
+                            &:before {
+                                display: block;
+                                content: 'Size';
+                                font-size: 12px;
+                                opacity: 0.5;
+                            }
+                        }
+                    }
+                    .price {
+                        @include media($tablet) {
+                            &:before {
+                                display: block;
+                                content: 'Price';
+                                font-size: 12px;
+                                opacity: 0.5;
+                            }
+                        }
+                    }
+                    .total {
+                        width:100px;
+                        @include media($tablet) {
+                            // flex: none;
+                            // width:100%;
+                            margin-bottom: 15px;
+                            font-size: 14px;
+                            &:before {
+                                display: block;
+                                content: 'total';
+                                font-size: 12px;
+                                opacity: 0.5;
+                            }
+                        }
+                    }
+                    .trash {
+                        text-align: right;
+                        @include media($mobile) {
+                            // position: absolute;
+                            // top:0;
+                            // right:0;
+                        }
+                        a {
+                            color: $black;
+                            text-decoration: none;
+                            position: relative;
+                            font-size: 22px;
+                            &:after {
+                                @include transition(all 0.2s ease-in-out);
+                                content: '';
+                                height:0px;
+                                width:100%;
+                                background-color: $black;
+                                position: absolute;
+                                bottom:-5px;
+                                left:0;
+                                z-index: -1;
+                            }
+                            &:before {
+                                @include transition(all 0.2s ease-in-out);
+                                content: '';
+                                height:calc(100% + 10px);
+                                width:calc(100% + 10px);
+                                background-color: $white;
+                                position: absolute;
+                                top:-5px;
+                                left:-5px;
+                                z-index: -1;
+                            }
+                            &:hover {
+                                @include transition(all 0.2s ease-in-out);
+                                color:$white;
+                                &:before {
+                                    @include transition(all 0.2s ease-in-out);
+                                    content: '';
+                                    width:calc(100% + 10px);
+                                    background-color: $black;
+                                    position: absolute;
+                                    color:$white;
+                                    z-index: -1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .summary-items {
+                margin-bottom: $basepadding*2;
+                .one-row {
+                    @include flexbox;
+                    align-items: flex-start;
+                    justify-content: flex-end;
+                    text-transform: uppercase;
+                    position: relative;
+                    font-size: 21px;
+                    margin-bottom: $basepadding/2;
+                    padding-bottom: $basepadding/2;
+                    .flex-none {
+                        flex: none;
+                        width:70px;
+                        // @include makeborder;
+                        @include media($mobile) {
+                            width:0;
+                        }
+                    }
+                    .headers {
+                        font-size: 12px;
+                        line-height: 1em;
+                        opacity: 0.5;
+                        width:100px;
+                        align-self: flex-start;
+                        // @include makeborder;
+                    }
+                    .total {
+                        width:100px;
+                        text-align: right;
+                        // @include makeborder;
+                    }
+                }
+            }
+            .checkout-now {
+                width:100%;
+                @include flexbox;
+                justify-content: flex-end;
+                margin-bottom: $objectgutter;
+            }
+        }
+    }
+}
