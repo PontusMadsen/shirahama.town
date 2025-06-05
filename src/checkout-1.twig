@@ -1,0 +1,39 @@
+{% extends "partials/_layout.twig" %}
+
+{# Set the page title #}
+{% set pageTitle = 'shirahama.town' %}
+
+{% block page %}
+	{# Start writing code! #}
+	<section class="wide cart-page-section">
+
+		<div class="left-column">
+			<div class="content">
+				<h4>Leaving already?</h4>
+				<h1>Checkout</h1>
+                <div>
+                    <ol class="">
+                        <li id="stepper-1" class="">
+                                <span class="">1</span>
+                                01 your info
+                        </li>
+                        <li id="stepper-2" class="">
+                                <span class="">2</span>
+                                02 shipping
+                        </li>
+                        <li id="stepper-3" class="">
+                                <span class="">3</span>
+                                03 Payment
+                        </li>
+                    </ol>
+                </div>
+                <div>
+                    right
+                </div>
+
+            </div>
+		</div>
+
+	</section>
+
+{% endblock %}
