@@ -88,8 +88,8 @@ a {
         @include transition(all 0.2s ease-in-out);
         content: '';
         height:calc(100% + 10px);
-        width:0%;
-        background-color: $black;
+        width:calc(100% + 10px);
+        background-color: $white;
         position: absolute;
         top:-5px;
         left:-5px;
@@ -187,6 +187,11 @@ b, strong {
     visibility: hidden;
 }
 
+::selection {
+  color: red;
+  background: yellow;
+}
+
 .footer-holder {
     position: relative;
     z-index: z(site-footer);
@@ -210,6 +215,12 @@ b, strong {
                         text-decoration: none;
                         text-transform: uppercase;
                     }
+                }
+            }
+            p {
+                span {
+                    background-color: $white;
+                    padding:10px 10px;
                 }
             }
         }

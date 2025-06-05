@@ -57,101 +57,41 @@
         <main>
             {% block page %}{% endblock %}
         </main>
-        <section class="stuff">
+        {# <section class="stuff">
             <section class="wide content">
                 <a href="">Stores</a> /
                 <a href="">日本語</a>
             </section>
-        </section>
+        </section> #}
         <section class="wide footer-holder">
             <footer>
                 <div class="content">
                     <ul>
                         <li>
-                            <a href="">Stores</a>
+                            <a href="stores.html">Stores</a>
                         </li>
                         <li>
-                            <a href="">Contact</a>
+                            <a href="contact.html">Contact</a>
                         </li>
                         <li>
-                            <a href="">ABOUT</a>
+                            <a href="about.html">ABOUT</a>
                         </li>
                         <li>
-                            <a href="">FAQ</a>
+                            <a href="faq.html">FAQ</a>
                         </li>
                         <li>
-                            <a href="">Shipping</a>
+                            <a href="shipping.html">Shipping</a>
                         </li>
-                        <li>
-                            <a href="">日本語</a>
-                        </li>
+                        {# <li>
+                            <a href="japanese.html">日本語</a>
+                        </li> #}
                     </ul>
                     <p>
-                        (c) {{ "now"|date("Y") }} Pontus madsen & Distorted kids
+                        <span>(c) {{ "now"|date("Y") }} Pontus madsen & Distorted kids</span>
                     </p>
                 </div>
             </footer>
         </section>
-
-        <div class="cart-mini-holder">
-            <div class="content">
-                <div class="close-this">
-                    <a href="" class="toggle-mini-cart">Close</a>
-                </div>
-                <div class="products">
-                    <div class="one-row">
-                        <div class="image">
-                            <img src="assets/img/Group-33.jpg" alt="District of Yuzaki t-shirt" class="default-img" />
-                        </div>
-                        <div class="text">
-                            <div class="remove">
-                                <a href="">Remove x</a>
-                            </div>
-                            <div class="top">
-                                <h3>District of Yuzaki, Shirahama</h3>
-                            </div>
-                            <div class="bottom">
-                                <p class="price">JPY 4,500</p>
-                                <p class="size"><span>size:</span> small</p>
-                                <p class="quantity"><span>quantity:</span> 1</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="one-row">
-                        <div class="image">
-                            <img src="assets/img/Group-33.jpg" alt="District of Yuzaki t-shirt" class="default-img" />
-                        </div>
-                        <div class="text">
-                            <div class="remove">
-                                <a href="">Remove x</a>
-                            </div>
-                            <div class="top">
-                                <h3>District of Yuzaki, Shirahama</h3>
-                            </div>
-                            <div class="bottom">
-                                <p class="price">JPY 4,500</p>
-                                <p class="size"><span>size:</span> small</p>
-                                <p class="quantity"><span>quantity:</span> 1</p>
-                            </div>
-                        </div>
-                    </div>                
-                </div>
-
-                <div class="recap-and-buy">
-                    <div class="total-price">
-                        Total jpy 4.500
-                    </div>
-                    <button>Check out with PayPal</button>
-                    <p>
-                        order made and Hand printed in Shirahama, Japan.
-                        Prints might vary, but that’s what’s awesome with
-                        supporting Small Local businesses.
-                    </p>
-                </div>
-
-
-            </div>
-        </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         {# <script>
