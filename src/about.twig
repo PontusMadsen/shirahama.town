@@ -1,0 +1,52 @@
+{% extends "partials/_layout.twig" %}
+
+{# Set the page title #}
+{% set pageTitle = 'shirahama.town' %}
+{% set current_nav = 'about' %}
+
+{% block page %}
+	{# Start writing code! #}
+	<section class="wide content-page-section">
+
+		<div class="top-column">
+			<div class="content">
+                <h2>About us</h2>
+				<h1>Making T-Shirts the Right Way</h1>
+			</div>
+		</div>
+        <div class="full-column">
+            <div class="left-column">
+                    <p>
+                        We’re a small, local company based in Shirahama with a 
+                        simple mission: create exceptional t-shirts that this region deserves.
+                        <br /><br />
+                        The market is flooded with cheap, mass-produced apparel 
+                        that falls apart after a few washes. We saw a gap for 
+                        something better – high-quality garments that actually 
+                        last, made right here in Kansai using Japanese 
+                        materials and craftsmanship.
+                        <br /><br />
+                        Everything happens in-house and on a small scale. We 
+                        design each piece ourselves, drawing inspiration from 
+                        Shirahama’s stunning coastline and natural beauty. We work
+                        directly with local suppliers and manufacturers who share
+                        our commitment to quality over quantity.
+                    </p>
+            </div>
+            <div class="right-column">
+                    <p>
+                        The result? T-shirts that feel as good as they look, made by 
+                        people who care about what they’re creating. No corners cut, 
+                        no compromises on materials or construction.
+                        <br /><br />
+                        We’re not trying to compete with fast fashion. We’re 
+                        building something different, apparel that’s worth 
+                        owning, made the right way, in small batches, for 
+                        people who appreciate the difference quality makes.
+                    </p>
+            </div>
+        </div>
+
+	</section>
+
+{% endblock %}

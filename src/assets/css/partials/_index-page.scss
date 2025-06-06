@@ -17,7 +17,27 @@
         left: 0;
     }
 }
+.fullscreen-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
 
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
+}
 .start-page-section {
     @include flexbox;
     @include display-grid;
@@ -285,6 +305,90 @@
                 margin-bottom: $basepadding;
                 padding-bottom: $basepadding;
                 border-bottom: 2px solid $black;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.content-page-section {
+    @include flexbox;
+    @include display-grid;
+    @include grid-columns(repeat(12, 1fr));
+    .top-column {
+        @include grid-child(1,6,1,2);
+        position: relative;
+        // background-color: beige;
+        @include media($mobile) {
+            @include grid-child(1,13,1,2);
+            margin-bottom: $basepadding;
+        }
+        .content {
+            top:150px;
+            // margin: 20px;
+            // background-color: green;
+            h2 {
+                font-size: 14px;
+                opacity: 0.5;
+                margin-bottom: 10px;
+            }
+            h1 {
+                margin-bottom: $basepadding;
+                padding-bottom: $basepadding;
+                border-bottom: 2px solid $black;
+            }
+        }
+    }
+    .full-column {
+        @include grid-child(1,13,2,3);
+        // background-color: aqua;
+        @include flexbox;
+        @include media($mobile) {
+            flex-wrap: wrap;
+        }
+        .left-column {
+            width:50%;
+            margin-bottom: $basepadding*2;
+            padding-right: $basepadding;     
+            h2 {
+                margin-bottom: $basepadding/2;
+            }       
+            h2 + p {
+                margin-bottom: $basepadding;
+            }
+            @include media($tablet) {
+            }
+            @include media($mobile) {
+                margin-bottom: $basepadding;
+                width:100%;
+                padding-right: 0;     
+            }
+        }
+        .right-column {
+            width:50%;
+            padding-left: $basepadding;            
+            margin-bottom: $basepadding*2;
+            h2 {
+                margin-bottom: $basepadding/2;
+            }       
+            h2 + p {
+                margin-bottom: $basepadding;
+            }
+            @include media($tablet) {
+            }
+            @include media($mobile) {
+                width:100%;
+                padding-left: 0;     
             }
         }
     }

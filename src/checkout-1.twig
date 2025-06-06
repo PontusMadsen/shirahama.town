@@ -5,34 +5,171 @@
 
 {% block page %}
 	{# Start writing code! #}
-	<section class="wide cart-page-section">
+	<section class="wide checkout-page-section">
 
-		<div class="left-column">
 			<div class="content">
-				<h4>Leaving already?</h4>
-				<h1>Checkout</h1>
-                <div>
+                <div class="header-items">
+                    <h4>Leaving already?</h4>
+                    <h1>Checkout</h1>
+                </div>
+                <div class="left">
+
                     <ol class="">
-                        <li id="stepper-1" class="">
-                                <span class="">1</span>
-                                01 your info
+                        <li id="stepper-1" class="active">
+                                <span class="">1&nbsp;your&nbsp;info</span>
                         </li>
                         <li id="stepper-2" class="">
-                                <span class="">2</span>
-                                02 shipping
+                                <span class="">2 shipping</span>
                         </li>
                         <li id="stepper-3" class="">
-                                <span class="">3</span>
-                                03 Payment
+                                <span class="">3&nbsp;Payment</span>
                         </li>
                     </ol>
-                </div>
-                <div>
-                    right
-                </div>
 
+                    <div class="big-error text-red">Not all your fields are filled out.</div>
+                    
+                    <div class="checkout-header">
+                        Your info
+                    </div>
+                    <div class="your-info">
+                        <div class="one-row">
+                            <span>
+                                First name <span class="text-red">(Required)</span>
+                            </span>
+                            <input type="text" name="firstname" id="firstname" value="John">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                Last name
+                            </span>
+                            <input type="text" name="lastname" id="lastname" value="Doe">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                Email
+                            </span>
+                            <input type="text" name="email" id="email" value="john@doe.com">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                Phone
+                            </span>
+                            <input type="text" name="phone" id="phone" value="123456789">
+                        </div>
+                    </div>
+
+                    <div class="checkout-header">
+                        Billing address
+                    </div>
+                    <div class="your-info">
+                        <div class="one-row">
+                            <span>
+                                Address <span class="text-red">(Required)</span>
+                            </span>
+                            <input type="text" name="firstname" id="firstname" value="John">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                Address 2
+                            </span>
+                            <input type="text" name="lastname" id="lastname" value="Doe">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                City
+                            </span>
+                            <input type="text" name="email" id="email" value="john@doe.com">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                State
+                            </span>
+                            <input type="text" name="phone" id="phone" value="123456789">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                zip code
+                            </span>
+                            <input type="text" name="email" id="email" value="john@doe.com">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                country
+                            </span>
+                            <div class="selectholder">
+                                <select name="billing_country" class="input"><option value=""></option><option value="AR">Argentina</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="BS">Bahamas</option><option value="BB">Barbados</option><option value="BE">Belgium</option><option value="BM">Bermuda</option><option value="BA">Bosnia and Herzegovina</option><option value="BR">Brazil</option><option value="BQ">British Antarctic Territory</option><option value="IO">British Indian Ocean Territory</option><option value="VG">British Virgin Islands</option><option value="BG">Bulgaria</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="CT">Canton and Enderbury Islands</option><option value="CV">Cape Verde</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="CL">Chile</option><option value="CN">China</option><option value="CX">Christmas Island</option><option value="CR">Costa Rica</option><option value="HR">Croatia</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="EE">Estonia</option><option value="FK">Falkland Islands</option><option value="FO">Faroe Islands</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HM">Heard Island and McDonald Islands</option><option value="HN">Honduras</option><option value="HK">Hong Kong SAR China</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IE">Ireland</option><option value="IM">Isle of Man</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP" selected="">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macau SAR China</option><option value="MK">Macedonia</option><option value="MG">Madagascar</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MX">Mexico</option><option value="MI">Midway Islands</option><option value="MD">Moldova</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MA">Morocco</option><option value="NL">Netherlands</option><option value="AN">Netherlands Antilles</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NF">Norfolk Island</option><option value="NO">Norway</option><option value="PC">Pacific Islands Trust Territory</option><option value="PS">Palestinian Territories</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="RO">Romania</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="MF">Saint Martin</option><option value="PM">Saint Pierre and Miquelon</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="SA">Saudi Arabia</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="ZA">South Africa</option><option value="KR">South Korea</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SJ">Svalbard and Jan Mayen</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="TW">Taiwan</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania</option><option value="TH">Thailand</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US">United States</option><option value="UY">Uruguay</option><option value="VE">Venezuela</option><option value="VN">Vietnam</option></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkout-header">
+                        Shipping address
+                    </div>
+                    <div class="is-it-the-same">
+                        <input type="checkbox" value="1" checked id="billing_same_as_shipping" name="billing_same_as_shipping">
+                        <label for="billing_same_as_shipping">Shipping is the same as billing</label>
+                    </div>
+                    <div class="your-info">
+                        <div class="one-row">
+                            <span>
+                                Address <span class="text-red">(Required)</span>
+                            </span>
+                            <input type="text" name="firstname" id="firstname" value="John">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                Address 2
+                            </span>
+                            <input type="text" name="lastname" id="lastname" value="Doe">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                City
+                            </span>
+                            <input type="text" name="email" id="email" value="john@doe.com">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                State
+                            </span>
+                            <input type="text" name="phone" id="phone" value="123456789">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                zip code
+                            </span>
+                            <input type="text" name="email" id="email" value="john@doe.com">
+                        </div>
+                        <div class="one-row">
+                            <span>
+                                country
+                            </span>
+                            <div class="selectholder">
+                                <select name="billing_country" class="input"><option value=""></option><option value="AR">Argentina</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="BS">Bahamas</option><option value="BB">Barbados</option><option value="BE">Belgium</option><option value="BM">Bermuda</option><option value="BA">Bosnia and Herzegovina</option><option value="BR">Brazil</option><option value="BQ">British Antarctic Territory</option><option value="IO">British Indian Ocean Territory</option><option value="VG">British Virgin Islands</option><option value="BG">Bulgaria</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="CT">Canton and Enderbury Islands</option><option value="CV">Cape Verde</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="CL">Chile</option><option value="CN">China</option><option value="CX">Christmas Island</option><option value="CR">Costa Rica</option><option value="HR">Croatia</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="EE">Estonia</option><option value="FK">Falkland Islands</option><option value="FO">Faroe Islands</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HM">Heard Island and McDonald Islands</option><option value="HN">Honduras</option><option value="HK">Hong Kong SAR China</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IE">Ireland</option><option value="IM">Isle of Man</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP" selected="">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macau SAR China</option><option value="MK">Macedonia</option><option value="MG">Madagascar</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MX">Mexico</option><option value="MI">Midway Islands</option><option value="MD">Moldova</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MA">Morocco</option><option value="NL">Netherlands</option><option value="AN">Netherlands Antilles</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NF">Norfolk Island</option><option value="NO">Norway</option><option value="PC">Pacific Islands Trust Territory</option><option value="PS">Palestinian Territories</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="RO">Romania</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="MF">Saint Martin</option><option value="PM">Saint Pierre and Miquelon</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="SA">Saudi Arabia</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="ZA">South Africa</option><option value="KR">South Korea</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SJ">Svalbard and Jan Mayen</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="TW">Taiwan</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania</option><option value="TH">Thailand</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US">United States</option><option value="UY">Uruguay</option><option value="VE">Venezuela</option><option value="VN">Vietnam</option></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <a href="cart.html" class="button">Back to cart</a>
+                        <a href="checkout-2.html" class="button">Next step</a>
+                    </div>
+
+
+
+
+
+                </div>
+                <div class="right">
+                    <div class="checkout-header">
+                        Thanks for supporting our small business
+                    </div>
+                    <p>
+                        The result? T-shirts that feel as good as they look, made by people who care about what they’re creating. No corners cut, no compromises on materials or construction.
+                        <br /><br />
+                        We’re not trying to compete with fast fashion. We’re building something different – apparel that’s worth owning, made the right way, in small batches, for people who appreciate the difference quality makes.
+                    </p>
             </div>
-		</div>
 
 	</section>
 

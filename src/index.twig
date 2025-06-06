@@ -5,9 +5,16 @@
 
 {% block page %}
 	{# Start writing code! #}
-    <div class="background-image">
-        <img src="assets/img/0_0-4-made.jpg" alt="background image" />
+    <div class="fullscreen-container">
+        <video class="background-video" autoplay muted loop playsinline>
+            <source src="assets/img/shirts-video_v3-hb.mp4" type="video/mp4">
+            <!-- Fallback for older browsers -->
+            Your browser does not support the video tag.
+        </video>
     </div>
+    {# <div class="background-image">
+        <img src="assets/img/0_0-4-made.jpg" alt="background image" />
+    </div> #}
 	<section class="wide start-page-section">
 		<div class="left-column">
 			<div class="content">

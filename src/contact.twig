@@ -1,0 +1,38 @@
+{% extends "partials/_layout.twig" %}
+
+{# Set the page title #}
+{% set pageTitle = 'shirahama.town' %}
+{% set current_nav = 'Contact' %}
+
+{% block page %}
+	{# Start writing code! #}
+	<section class="wide content-page-section">
+
+		<div class="top-column">
+			<div class="content">
+                <h2>contact</h2>
+				<h1>Please contact us</h1>
+			</div>
+		</div>
+        <div class="full-column">
+            <div class="left-column">
+                    <p>
+                        Shirahama.town<br />
+                        1941 Shirahama<br />
+                        Nishimuro, Wakayama<br />
+                        649-2211<br />
+                        Japan<br />
+                    </p>
+                </div>
+            <div class="right-column">
+                    <p>
+                        email: <a href="mailto:hello@shirahama.town">hello@shirahama.town</a><br />
+                        <br />
+                        phone: +81-649-2211<br />
+                    </p>
+            </div>
+        </div>
+
+	</section>
+
+{% endblock %}

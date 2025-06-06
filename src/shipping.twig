@@ -1,0 +1,33 @@
+{% extends "partials/_layout.twig" %}
+
+{# Set the page title #}
+{% set pageTitle = 'shirahama.town' %}
+{% set current_nav = 'Shipping' %}
+
+{% block page %}
+	{# Start writing code! #}
+	<section class="wide content-page-section">
+
+		<div class="top-column">
+			<div class="content">
+                <h2>Shipping</h2>
+				<h1>Shipping worldwide, Of course.</h1>
+			</div>
+		</div>
+        <div class="full-column">
+            <div class="left-column">
+                    <p>
+                        We ship all orders via Japan Post, typically within 3 business days of purchase.
+                        <br /><br />
+                        Once your order ships, you’ll receive and email stating it’s been sent. Japan Post provides reliable delivery throughout Japan with standard shipping times varying by location. We sadly don’t offer tracking.
+                        <br /><br />
+                        For any shipping questions or concerns, feel free to contact us directly.
+                    </p>
+            </div>
+            <div class="right-column">
+            </div>
+        </div>
+
+	</section>
+
+{% endblock %}

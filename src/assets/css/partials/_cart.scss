@@ -243,3 +243,206 @@
         }
     }
 }
+
+.text-red {
+    color: $errorcolor;
+}
+.big-error {
+    width:100%;
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-bottom: $basepadding;
+}
+.checkout-header {
+    margin-bottom: 15px;
+    font-size: 21px;
+    text-transform: uppercase;
+}
+.is-it-the-same {
+    margin-bottom: $basepadding/2;
+}
+
+.shipping-radio-holder {
+    margin-bottom: $basepadding*2;
+    text-transform: uppercase;
+}
+
+.checkout-page-section {
+    @include flexbox;
+    margin-bottom: 50px;
+    .content {
+        position: relative;
+        // top:150px;
+        // margin: 20px;
+        // background-color: green;
+        width:100%;
+        @include display-grid;
+        @include grid-columns(repeat(12, 1fr));
+        .header-items {
+            @include grid-child(1,13,1,2);
+            @include flexbox;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-direction: column;
+            @include media($tablet) {
+                @include grid-child(1,13,1,2);
+            }
+            h1 {
+                margin-bottom: 10px;
+            }
+            h4 {
+                margin-bottom: 10px;
+                color: rgba(0,0,0,0.4);
+                &.price {
+                    margin-bottom: 15px;
+                    padding-bottom: $basepadding;
+                    border-bottom: 2px solid $black;
+                }
+            }
+        }
+        .left {
+            @include grid-child(1,7,2,3);
+            @include media($tablet) {
+                @include grid-child(1,13,2,3);
+            }
+            ol {
+                list-style: none;
+                padding:0;
+                margin:0;
+                width:100%;
+                text-transform: uppercase;
+                // @include makeborder;
+                @include flexbox;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: $basepadding*2;
+                li {
+                    list-style: none;
+                    position: relative;
+                    color: rgba(0,0,0,0.4);
+                    span {
+                        display: block;
+                        padding:0 10px 0 0;
+                        background-color: $white;                        
+                    }
+                    &:not(:first-child) {
+                        width:100%;
+                        text-align: right;
+                        padding:0 10px 0 10px;
+                        &:before {
+                            content: '';
+                            height:2px;
+                            width: 100%;
+                            background-color: rgba(0,0,0,0.4);
+                            position: absolute;
+                            top:calc(50% - 2px);
+                            right:0%;
+                            z-index: -1;
+                            margin-left: 1.5rem;
+                            margin-right: 1.5rem;
+                        }
+                        span {
+                            display: inline-block;
+                            padding:0 10px;
+                            background-color: $white;                        
+                        }
+                        // background-color: aquamarine
+                    }
+                    &.active {
+                        color: rgba(0,0,0,1);
+                        &:not(:first-child) {
+                            width:100%;
+                            text-align: right;
+                            padding:0 10px 0 10px;
+                            &:before {
+                                content: '';
+                                background-color: rgba(0,0,0,1);
+                            }
+                        }
+                    }
+                }
+            }
+            .your-info {
+                @include flexbox;
+                justify-content: flex-start;
+                align-items: flex-start;
+                flex-wrap: wrap;
+                margin-bottom: $basepadding;
+                .one-row {
+                    @include flexbox;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    flex-direction: column;
+                    margin-bottom: $basepadding/2;
+                    width: 50%;
+                    &:nth-child(odd) {
+                        padding-right: $gutter;
+                    }
+                    @include media($mobile) {
+                        width:100%;
+                        &:nth-child(odd) {
+                            padding-right: 0;
+                        }
+                    }
+                    span {
+                        text-transform: uppercase;
+                        display: inline-block;
+                        margin-bottom: 5px;
+                        span {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+                input {
+                    border:2px solid $black;
+                    padding:10px;
+                    width:100%;
+                    font-family: "Noto Sans JP", sans-serif;
+                    font-size: 14px;
+                    color: $black;
+                    background-color: $white;
+                }
+                .selectholder {
+                    border:2px solid $black;
+                    padding:9px 10px 10px 10px;
+                    width:100%;
+                    background-color: $white;                    
+                }
+                select {
+                    width:100%;
+                    border:0;
+                    font-family: "Noto Sans JP", sans-serif;
+                    font-size: 14px;
+                    color: $black;
+
+                }
+            }
+            .buttons {
+                @include flexbox;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        .right {
+            @include grid-child(7,13,2,3);
+            // background-color: rgba(0,0,0,0.1);
+            padding: 0 $basepadding*2;
+            @include media($tablet) {
+                display:none;
+            }
+            .checkout-header {
+                width:100%;
+                max-width: 400px;
+                line-height: 1.25em;
+            }
+            p {
+                width:100%;
+                max-width: 500px;
+                margin-top: $basepadding;
+                margin-bottom: $basepadding;
+                font-size: 14px;
+            }
+        }
+    }
+}

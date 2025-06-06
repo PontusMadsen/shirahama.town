@@ -1,0 +1,62 @@
+{% extends "partials/_layout.twig" %}
+
+{# Set the page title #}
+{% set pageTitle = 'shirahama.town' %}
+
+{% block page %}
+	{# Start writing code! #}
+	<section class="wide checkout-page-section">
+
+			<div class="content">
+                <div class="header-items">
+                    <h4>Leaving already?</h4>
+                    <h1>Checkout</h1>
+                </div>
+                <div class="left">
+
+                    <ol class="">
+                        <li id="stepper-1" class="active">
+                                <span class="">1&nbsp;your&nbsp;info</span>
+                        </li>
+                        <li id="stepper-2" class="active">
+                                <span class="">2 shipping</span>
+                        </li>
+                        <li id="stepper-3" class="active">
+                                <span class="">3&nbsp;Payment</span>
+                        </li>
+                    </ol>
+
+                    {# <div class="big-error text-red">Not all your fields are filled out.</div> #}
+                    
+                    <div class="checkout-header">
+                        Payment
+                    </div>
+                    <div class="shipping-radio-holder">
+                        <input id="{gateway:name}" type="radio" 
+                        name='gateway' 
+                        checked="checked" 
+                        value='{gateway:name}' />
+                        <label for="{gateway:name}">stripe</label>
+                    </div>
+
+                    <div class="buttons">
+                        <a href="checkout-2.html" class="button">Previous step</a>
+                        <button name="step-3" type="submit" class="button">Checkout</button>
+                    </div>
+
+
+                </div>
+                <div class="right">
+                    <div class="checkout-header">
+                        Thanks for supporting our small business
+                    </div>
+                    <p>
+                        The result? T-shirts that feel as good as they look, made by people who care about what they’re creating. No corners cut, no compromises on materials or construction.
+                        <br /><br />
+                        We’re not trying to compete with fast fashion. We’re building something different – apparel that’s worth owning, made the right way, in small batches, for people who appreciate the difference quality makes.
+                    </p>
+            </div>
+
+	</section>
+
+{% endblock %}
