@@ -108,6 +108,44 @@ a, button {
             z-index: -1;
         }
     }
+    &.no-dash {
+        &:after {
+            @include transition(all 0.2s ease-in-out);
+            content: '';
+            height:2px;
+            width:0%;
+            background-color: $black;
+            position: absolute;
+            bottom:-5px;
+            left:0;
+            z-index: -1;
+        }
+        &:before {
+            @include transition(all 0.2s ease-in-out);
+            content: '';
+            height:calc(100% + 10px);
+            width:calc(100% + 10px);
+            background-color: $white;
+            position: absolute;
+            top:-5px;
+            left:-5px;
+            z-index: -1;
+        }
+        &:hover {
+            @include transition(all 0.2s ease-in-out);
+            color:$white;
+            cursor: pointer;
+            &:before {
+                @include transition(all 0.2s ease-in-out);
+                content: '';
+                width:calc(100% + 10px);
+                background-color: $black;
+                position: absolute;
+                color:$white;
+                z-index: -1;
+            }
+        }
+    }
     &.button {
         width:100%;
         max-width: 250px;
