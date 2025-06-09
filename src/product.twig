@@ -10,10 +10,10 @@
 		<div class="left-column">
 			<div class="content">
 				<h4>Coming soon</h4>
-				<h1>District of yuzaki / Shirahama</h1>
+				<h1><span>District of yuzaki / Shirahama</span></h1>
 				<h4 class="price">JPY 4.500</h4>
 				<h4>Description</h4>
-				<h2>Represent the yuzaki District with pride!</h2>
+				<h2><span>Represent the yuzaki District with pride!</span></h2>
 				<p>
 					<span>order made and Hand printed in Shirahama, Japan.
 					Prints might vary, but that's what's awesome with
@@ -42,18 +42,37 @@
 					<span>
 						size
 					</span>
-					<div class="radio-holder">
-						<input type="radio" name="size" id="size-small" value="small" checked>
-						<label for="size-small">S</label>
-						<input type="radio" name="size" id="size-medium" value="medium">
-						<label for="size-medium">M</label>
-						<input type="radio" name="size" id="size-large" value="large">
-						<label for="size-large">L</label>
-						<input type="radio" name="size" id="size-xlarge" value="xlarge">
-						<label for="size-xlarge">XL</label>
-					</div>
+					<div class="size-options">
+                        <div class="size-option low-stock" 
+                            data-url="shirahama-town-t-shirt-small" 
+                            data-stock="1" 
+                            data-size="S" 
+                            data-low-stock="true">
+                            S
+                        </div>
+                        <div class="size-option current" 
+                            data-url="shirahama-town-t-shirt-medium" 
+                            data-stock="4" 
+                            data-size="M" 
+                            data-current="true">
+                            M
+                        </div>
+                        <div class="size-option" 
+                            data-url="shirahama-town-t-shirt-large" 
+                            data-stock="4" 
+                            data-size="L">
+                            L
+                        </div>
+                        <div class="size-option out-of-stock" 
+                            data-url="shirahama-town-t-shirt-xlarge" 
+                            data-stock="0" 
+                            data-size="XL" 
+                            data-out-of-stock="true">
+                            XL
+                        </div>
+                    </div>
 				</div>
-				<div class="one-row">
+				{# <div class="one-row">
 					<span>
 						Quantity
 					</span>
@@ -65,9 +84,9 @@
 						<input type="radio" name="quantity" id="three" value="3">
 						<label for="three">Three</label>
 					</div>
-				</div>
+				</div> #}
 				<div class="one-row no-dash">
-					<button>Buy this shirt</button>
+					<button class="button stock-info">Buy this shirt</button>
 				</div>
 			</div>
 		</div>

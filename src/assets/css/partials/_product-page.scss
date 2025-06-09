@@ -7,6 +7,13 @@
         position: relative;
         z-index: z(left-column);
         // background-color: beige;
+        @include media($tablet) {
+            @include grid-child(1,6,1,2);
+            height:auto;
+        }
+        @include media($mobile) {
+            @include grid-child(1,13,1,2);
+        }
         .content {
             position: sticky;
             top:150px;
@@ -14,6 +21,10 @@
             // background-color: green;
             h1 {
                 margin-bottom: 10px;
+                span {
+                    background-color: $white;
+                    padding:2px 0px;
+                }
             }
             h4 {
                 margin-bottom: 10px;
@@ -27,6 +38,10 @@
             h2 {
                 margin-bottom: $basepadding/2;
                 line-height: 1.5em;
+                span {
+                    background-color: $white;
+                    padding:2px 0px;
+                }
             }
             p {
                 font-size: 14px;
@@ -41,6 +56,15 @@
         @include grid-child(4,10,1,2);
         // background-color: aqua;
         z-index: z(center-column);
+        @include media($tablet) {
+            @include grid-child(4,13,1,2);
+            margin-bottom: 200px;
+            // display: none;
+        }
+        @include media($mobile) {
+            @include grid-child(1,13,2,3);
+            margin-top: $basepadding*2;
+        }
         .content {
             margin: 0px 20px;
             // height:1800px;
@@ -48,6 +72,9 @@
             margin-bottom: 50px;
             @include flexbox;
             flex-direction: column;
+            @include media($tablet) {
+                margin: 0 0 20px 0;
+            }
             img {
                 // padding-right: 20px; /* $basepadding equivalent */
                 &:not(:last-child) {
@@ -61,15 +88,30 @@
         position: relative;
         // background-color: beige;
         z-index: z(right-column);
+        @include media($tablet) {
+            @include grid-child(8,13,1,2);
+        }
+        @include media($mobile) {
+            @include grid-child(1,13,3,4);
+        }
         .content {
             // position: sticky;
             // top:150px;
             position: sticky;
-            top:calc(100vh - 300px);
+            top:calc(100vh - 250px);
             // opacity: 0.3;
             // margin: 20px;
             // background-color: green;
             margin-bottom: $basepadding*2;
+            @include media($tablet) {
+                background-color: $white;
+                padding: 10px;
+                top:calc(100vh - 200px);
+                // position: relative;
+                // top:calc(100vh - 400px);
+                // top:0;
+                // margin-top: $basepadding;
+            }
             .one-row {
                 border-top: 2px solid $black;
                 padding-top: $basepadding;
@@ -83,49 +125,58 @@
                     display: inline-block;
                     line-height: 1em;
                 }
-                ul {
+                .size-options {
                     margin:0;
                     padding: 0;
                     @include flexbox;
                     align-items: center;
                     justify-content: space-between;
-                    li {
+                    .size-option {
                         font-size: 21px;
-                        color: rgba(0,0,0,0.4);
+                        color: rgba(0,0,0,1);
                         margin-right: 10px;
                         list-style: none;
                         margin-right: 10px;
+                        padding:5px 10px;
+
+                        border: 2px solid #ddd;
+                        background: white;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        text-align: center;
+                        &:not(.out-of-stock, .current):hover {
+                            background: $black;
+                            border: 2px solid $black;
+                            color: white;
+                        }
+                        &.out-of-stock {
+                            color: rgba(0,0,0,0.2);
+                            cursor: none;
+                            pointer-events: none;
+                            text-decoration: line-through;
+                        }
+                        &.low-stock {
+                            border-bottom:2px solid #f57c00;
+                        }
+                        &.current {
+                            border-color: $black;
+                            background: $black;
+                            color: white;
+                            cursor: default;
+                            position: relative;
+                        }
                         &:last-child {
                             margin-right: 10px;
-                        }
-                        a {
-                            padding: 0px 5px;
-                        }
-                        &.inactive {
-                            a {
-                                cursor: none;
-                                pointer-events: none;
-                                color: rgba(0,0,0,0.2);
-                                &:after {
-                                    @include transition(all 0.2s ease-in-out);
-                                    content: '';
-                                    height:2px;
-                                    width:100%;
-                                    background-color: $black;
-                                    position: absolute;
-                                    bottom:50%;
-                                    left:0;
-                                    z-index: -1;
-                                }
-                            }
                         }
                     }
                 }   
                 &.no-dash {
+                    diaplay: block;
                     border-top: 0px solid $black;
-                    padding-bottom: 0;
+                    padding:20px 0 0 0;
+                    width:100% !important;
                     button {
-                        width:100%;
+                        width:100% !important;
                         padding: 20px;
                         text-transform: uppercase;
                         background-color: $black;
@@ -136,6 +187,15 @@
                             color: $black;
                             @include transition(all 0.2s ease-in-out);
                             cursor: pointer;
+                        }
+                        &.button {
+                            width:100% !important;
+                            min-width: auto;
+                            max-width: 100%!important;
+                        }
+                        &.stock-info {
+                            opacity: 0.3;
+                            pointer-events: none;
                         }
                     }
                 }
