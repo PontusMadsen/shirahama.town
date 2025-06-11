@@ -314,6 +314,15 @@ b, strong {
                     padding:10px 10px;
                 }
             }
+            .payments-options {
+                margin-top: 10px;
+                @include flexbox;
+                justify-content: center;
+                align-items: center;
+                img {
+                    max-width: 200px;
+                }
+            }
         }
     }
 }

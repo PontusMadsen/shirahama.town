@@ -91,6 +91,9 @@
                     <p>
                         <span>(c) {{ "now"|date("Y") }} Pontus madsen & Distorted kids</span>
                     </p>
+                    <div class="payments-options">
+                        <img src="assets/img/payments.jpg" alt="">
+                    </div>
                 </div>
             </footer>
         </section>
@@ -120,6 +123,39 @@
                         $(this).find('.hover-img').css('opacity', '0');
                     }
                 );
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                // Open modal when .show-size-guide is clicked
+                $('.show-size-guide').on('click', function(e) {
+                    e.preventDefault();
+                    $('#sizeGuideModal').addClass('active');
+                    $('body').addClass('modal-open');
+                });
+                
+                // Close modal when clicking the X button
+                $('.modal-close').on('click', function() {
+                    $('#sizeGuideModal').removeClass('active');
+                    $('body').removeClass('modal-open');
+                });
+                
+                // Close modal when clicking the overlay (but not the content)
+                $('.modal-overlay').on('click', function(e) {
+                    if (e.target === this) {
+                        $(this).removeClass('active');
+                        $('body').removeClass('modal-open');
+                    }
+                });
+                
+                // Close modal with Escape key
+                $(document).on('keydown', function(e) {
+                    if (e.key === 'Escape' && $('#sizeGuideModal').hasClass('active')) {
+                        $('#sizeGuideModal').removeClass('active');
+                        $('body').removeClass('modal-open');
+                    }
+                });
             });
         </script>
         <script defer type="text/javascript" src="assets/js/external/ofi.min.js"></script>
