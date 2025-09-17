@@ -3,6 +3,9 @@
     // background-color: #bada55;
     // z-index: -1;
     height:100%;
+    @include flexbox;    
+    justify-content: space-between;
+    align-items: center;
 
     z-index: z(site-header);
     // width:auto;
@@ -18,12 +21,27 @@ nav {
 
     ul {
         @include flexbox;    
-        justify-content: space-between;
         align-items: center;
         list-style: none;
         margin: 0;
         padding: 0;
-
+        &.first {
+            flex:1;
+            li {
+                margin-right: 15px;
+            }
+        }
+        &.second {
+            flex:2;
+            @include flexbox;
+            justify-content: center;
+        }
+        &.third {
+            flex:1;
+            @include flexbox;
+            justify-content: flex-end;
+        }
+        
         li {
             font-size: 14px;
             display: inline-block;

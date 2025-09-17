@@ -139,6 +139,208 @@
                 border-bottom: 2px solid $black;
             }
         }
+        &.new {
+            @include grid-child(1,4,1,2);
+            position: relative;
+            // background-color: beige;
+            @include media($tablet) {
+                @include grid-child(1,13,2,3);
+                margin-bottom: $basepadding*2;
+                text-align: center;
+            }
+        }
+    }
+    .two-column {
+        @include grid-child(4,13,1,2);
+        margin: 0 20px;
+        @include media($tablet) {
+            @include grid-child(1,13,1,2);
+            margin: 0px 0px;
+        }
+        @include media($mobile) {
+        }
+        .content {
+            margin: 0px -20px;
+
+            // margin-top: -30px;
+            // height:1800px;
+            // background-color: blueviolet;
+            margin-bottom: $modulegutter;
+            @include flexbox;
+            // flex-direction: column;
+            flex-wrap: wrap;
+            @include media($tablet) {
+                margin-top: 0;
+                margin-bottom: $basepadding;
+            }   
+            @include media($mobile) {
+                margin-left: 0;
+                margin-right: 0;
+                margin-top: -50px;
+            }
+
+            .item {
+                width: calc(100% / 3);
+                // overflow: hidden;
+                padding:0 10px;
+                @include flexbox;
+                align-items: center;
+                margin-bottom: $basepadding;
+                flex-direction: column;
+                position: relative;
+                @include media($mobile) {
+                    width:100%;
+                    padding:0 0;
+                }
+            }
+
+            .image {
+                position: relative;
+                &:before {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    // background-color: #bada55;
+                    background-color: rgba(0,0,0,0.05);
+                    z-index: 1;
+                    position: absolute;
+                    pointer-events: none;
+                }
+            }
+
+            .image a {
+                position: relative;
+                display: block;
+            }
+
+            .image a:after {
+                transition: all 0.2s ease-in-out;
+                content: '';
+                height: 0px;
+                width: 0%;
+                background-color: #fff;
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                z-index: -1;
+            }
+
+            .image a:before {
+                transition: all 0.2s ease-in-out;
+                content: '';
+                height: 0;
+                width: 0%;
+                background-color: #fff;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                z-index: -1;
+            }
+
+            .image a:hover {
+                transition: all 0.2s ease-in-out;
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .image a:hover:before {
+                transition: all 0.2s ease-in-out;
+                content: '';
+                width: 0;
+                background-color: #fff;
+                position: absolute;
+                color: #fff;
+                z-index: -1;
+            }
+
+            .image img {
+                padding: 20px;
+                object-fit: cover;
+                display: block;
+                transform: scale(1);
+                transition: all 0.2s ease-in-out;
+            }
+
+            .image .hover-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .image:hover img {
+                transform: scale(1.02);
+                transition: all 0.2s ease-in-out;
+            }
+
+            .text {
+                padding: 10px;
+                width:100%;
+                @include flexbox;
+                justify-content: space-between;
+                align-items: flex-start;
+                flex-wrap: wrap;
+                .sizes {
+                    a:after {
+                        transition: all 0.2s ease-in-out;
+                        content: '';
+                        height: 0px;
+                        width: 0%;
+                        background-color: #fff;
+                        position: absolute;
+                        bottom: 0px;
+                        left: 0;
+                        z-index: -1;
+                    }
+                }
+            }
+
+            .text .status {
+                opacity: 0.5;
+                font-size: 14px;
+                margin: 0 0 10px 0;
+                &.comming-soon {
+                    opacity: 1;
+                    color: #109DD9;
+                }
+                &.sold-out {
+                    opacity: 1;
+                    color: #E93A42;
+                }
+                &.new {
+                    color: #1DA556;
+                }
+            }
+
+            .text .name {
+                font-size: 14px;
+                text-transform: uppercase;
+                width:50%;
+                margin-bottom: 5px;
+            }
+
+            .text .price {
+                margin-bottom: 5px;
+                font-size: 14px;
+                width:50%;
+                text-align: right;
+            }
+            .text .out-of-stock {
+                position: relative;
+                color: rgba(0,0,0,0.3);
+                &:after {
+                    content: '';
+                    width: 110%;
+                    height: 2px;
+                    background-color: #000;
+                    z-index: 1;
+                    left:-2px;
+                    top:5px;
+                    position: absolute;
+                }
+            }
+        }
     }
     .center-column {
         @include grid-child(4,10,1,2);
